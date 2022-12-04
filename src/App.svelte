@@ -56,7 +56,7 @@
         <ul>
             <p>This time card is very easy to use</p>
         </ul> -->
-        <h6>©2021 Thomas Huber <br /> me@tohuber.com</h6>
+        <h6>©2022 Thomas Huber <br /> me@tohuber.com</h6>
     </div>
 </main>
 
@@ -86,12 +86,14 @@
     }
 
     .row {
-        margin-top: 2rem;
+        display: flex;
+        max-width: 1024px;
+        margin: 2rem auto 0 auto;
     }
 
     .leftside {
-        float: left;
         width: 70%;
+        margin-right: 20px;
     }
 
     .timecards {
@@ -101,7 +103,6 @@
     }
 
     .rightside {
-        float: left;
         width: 30%;
     }
 
@@ -123,7 +124,8 @@
         text-align: center;
         background-color: #f2e8cf;
 
-        box-shadow: 0px 5px 5px #ddd;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+            0 2px 4px -2px rgb(0 0 0 / 0.1);
         border-radius: 20px;
         margin: 20px auto 50px auto;
         width: 70%;
