@@ -16,7 +16,25 @@
         </div>
 
         <div class="rightside">
-            <div class="ads" />
+            <div class="ads">
+                <script
+                    async
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9012705634493266"
+                    crossorigin="anonymous"
+                ></script>
+                <!-- TimeCard Right -->
+                <ins
+                    class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-9012705634493266"
+                    data-ad-slot="2538534477"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"
+                />
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
         </div>
     </div>
 
