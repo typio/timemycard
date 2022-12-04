@@ -48,7 +48,6 @@
         <ul>
             <p>Save values on reload</p>
             <p>Calculate pay for a given rate</p>
-            <p>Calculate O/T</p>
             <p>Add multiple pay periods per day (for breaks)</p>
         </ul>
 
