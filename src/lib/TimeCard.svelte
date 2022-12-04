@@ -10,6 +10,10 @@
     export let minTime;
     export let dayName;
     export let timeSum = 0;
+    export let noOTTimeSum = 0;
+    export let OTTimeSum = 0;
+    export let OT;
+    export let OTHours;
     export let daysofweek = [
         ["1", "2", "3", "4", "5", "6", "7"],
         ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"],
@@ -24,9 +28,33 @@
         ],
     ];
 
-    let gridDim = [daysInWeek + 1, 3];
-    $: col = `repeat(${gridDim[1]}, 1fr)`;
+    let times = [];
+
+    let gridDim = [daysInWeek + 1, 4];
+    $: col = `1fr 1fr 1fr 0.6fr`;
     $: row = `repeat(${gridDim[0]}, 1fr)`;
+
+    $: timeNoOT = times.reduce(
+        (total, time) => total + Math.min(time, OTHours),
+        0
+    );
+    $: timeNoOTHours = Math.floor(timeNoOT);
+    $: timeNoOTMinutes = Math.round((timeNoOT * 60) % 60);
+
+    $: {
+        noOTTimeSum = timeNoOT * 60;
+    }
+
+    $: timeOT = times.reduce(
+        (excess, time) => excess + (time > OTHours ? time - OTHours : 0),
+        0
+    );
+
+    $: timeOTHours = Math.floor(timeOT);
+    $: timeOTMinutes = Math.round((timeOT * 60) % 60);
+    $: {
+        OTTimeSum = timeOT * 60;
+    }
 
     const shiftDays = () => {
         days.forEach((day) => {
@@ -85,7 +113,8 @@
 
             // handle hhmm
             if (
-                parseInt(time.substr(0, 2)) >= 10 &&
+                time.length >= 4 &&
+                parseInt(time.substr(0, 2)) >= 11 &&
                 parseInt(time.substr(0, 2)) <= 12 &&
                 parseInt(time.substr(2, 2)) >= 0 &&
                 parseInt(time.substr(2, 2)) <= 59
@@ -103,7 +132,6 @@
                         time.substr(0, 2) + ":" + time.substr(2, 2);
                 return;
             }
-
             // handle hmm
             if (
                 parseInt(time[0]) >= 1 &&
@@ -135,6 +163,38 @@
                 if (isIn) days[index].in = "0:00";
                 else days[index].out = "0:00";
                 return;
+            } else if (
+                time.length < 4 &&
+                parseInt(time.substr(0, 1)) >= 1 &&
+                parseInt(time.substr(0, 1)) <= 9 &&
+                parseInt(time.substr(1, 2)) >= 0 &&
+                parseInt(time.substr(1, 2)) <= 59
+            ) {
+                if (isIn)
+                    days[index].in =
+                        time.substr(0, 1) + ":" + time.substr(1, 2);
+                else
+                    days[index].out =
+                        time.substr(0, 1) + ":" + time.substr(1, 2);
+                return;
+            } else if (
+                // hhmm
+                time.length >= 4 &&
+                parseInt(time.substr(0, 2)) >= 10 &&
+                parseInt(time.substr(0, 2)) <= 23 &&
+                parseInt(time.substr(2, 2)) >= 0 &&
+                parseInt(time.substr(2, 2)) <= 59
+            ) {
+                if (parseInt(time.substr(2, 2)) < 10) {
+                    time += "0";
+                }
+                if (isIn)
+                    days[index].in =
+                        time.substr(0, 2) + ":" + time.substr(2, 2);
+                else
+                    days[index].out =
+                        time.substr(0, 2) + ":" + time.substr(2, 2);
+                return;
             }
         }
 
@@ -148,7 +208,8 @@
 
     const calcHours = () => {
         timeSum = 0;
-        days.forEach((day) => {
+        days.forEach((day, i) => {
+            times[i] = 0;
             let timeDiff = 0;
             if (day.in === "" || day.out === "") return;
             let timeIn;
@@ -199,6 +260,7 @@
                 return;
             }
             timeSum += timeDiff;
+            times[i] = timeDiff / 60;
         });
     };
 </script>
@@ -215,6 +277,8 @@
         <div />
         <div><h3>In</h3></div>
         <div><h3>Out</h3></div>
+        <div><h3>Hours</h3></div>
+
         {#each days as day, index (index)}
             <div>
                 <h3>{daysofweek[dayName][day.dow]}</h3>
@@ -235,7 +299,9 @@
                 />
                 <div
                     class="AMPMToggle"
-                    style="display: {h12 ? 'flex' : 'none'}; background: #bc4749;"
+                    style="display: {h12
+                        ? 'flex'
+                        : 'none'}; background: #bc4749;"
                 >
                     <AmPmButton
                         value={index}
@@ -259,7 +325,11 @@
                         calcHours();
                     }}
                 />
-                <div style="display: {h12 ? 'flex' : 'none'}; background: #bc4749;">
+                <div
+                    style="display: {h12
+                        ? 'flex'
+                        : 'none'}; background: #bc4749;"
+                >
                     <AmPmButton
                         value={index}
                         bind:bindGroup={daysOutAM}
@@ -268,6 +338,11 @@
                 </div>
                 <!-- {daysOutAM[index] ? "AM" : "PM"} -->
             </div>
+            <div>
+                <h3>
+                    {times[index] ? Math.floor(times[index] * 100) / 100 : ""}
+                </h3>
+            </div>
         {/each}
         <button on:click={shiftDays}>Shift Days</button>
         <button on:click={addDay}>Add Day</button>
@@ -275,9 +350,28 @@
     </div>
 
     <div class="hourtotals">
-        <p>Total:</p>
-        <p>{(Math.round((timeSum / 60) * 100) / 100).toFixed(2)} hours</p>
-        <p>{Math.floor(timeSum / 60)} hours {timeSum % 60} minutes</p>
+        {#if OT}
+            <p>Total (without O/T):</p>
+
+            <p>
+                {Math.floor(timeNoOT * 100) / 100} hours
+            </p>
+            <p>
+                {timeNoOTHours} hours {timeNoOTMinutes} minutes
+            </p>
+            <hr />
+            <p>O/T Total:</p>
+            <p>
+                {Math.floor(timeOT * 100) / 100} hours
+            </p>
+            <p>
+                {timeOTHours} hours {timeOTMinutes} minutes
+            </p>
+        {:else}
+            <p>Total:</p>
+            <p>{(Math.round((timeSum / 60) * 100) / 100).toFixed(2)} hours</p>
+            <p>{Math.floor(timeSum / 60)} hours {timeSum % 60} minutes</p>
+        {/if}
     </div>
 </div>
 
@@ -287,12 +381,8 @@
         margin-bottom: 1em;
         border-radius: 20px;
         background-color: #6a994e;
-        box-shadow: 0px 5px 5px #ddd;
-    }
-
-    .hourtotals {
-        display: flex;
-        justify-content: center;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+            0 2px 4px -2px rgb(0 0 0 / 0.1);
     }
 
     button {
@@ -306,6 +396,9 @@
         border: 6px solid #bc4749;
         grid-gap: 6px;
         background: #bc4749;
+        box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1),
+            0 1px 2px -1px rgb(0 0 0 / 0.1);
+        margin: 0 auto 0 auto;
     }
 
     .container div {
@@ -325,6 +418,7 @@
         font-size: inherit;
         user-select: none;
         height: 100%;
+        width: 140px;
         border-width: 0;
     }
 
@@ -343,8 +437,15 @@
     }
 
     .hourtotals {
+        display: flex;
+        flex-wrap: wrap;
         margin: 20px 0 0 0;
         background: #386641;
+        display: flex;
+        justify-content: center;
+        padding: 1em;
+        box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1),
+            0 1px 2px -1px rgb(0 0 0 / 0.1);
     }
 
     .hourtotals p {
@@ -352,5 +453,10 @@
         border: none;
         font-weight: 900;
         padding: 0 20px 0 20px;
+    }
+
+    hr {
+        width: 100%;
+        border: solid 1px #6a994e;
     }
 </style>
