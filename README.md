@@ -11,4 +11,4 @@ View [Time Card Calculator](https://timemycard.com/) online!
 - 2/+ time cards in calculation ✅ v1.1.0
 
 ## About
-I created this for personal use, and to try out [Svelte](https://svelte.dev/).
+I created this for personal use, and to try out ~~[Svelte](https://svelte.dev/)~~ now [Vue](https://vuejs.org/).
