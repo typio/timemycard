@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  color-scheme: light dark;
+  color: black;
+  background-color: #ffffff;
+
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input[type=checkbox] {
+  appearance: none;
+  margin: 0;
+
+  border-radius: 0;
+  width: 1rem;
+  height: 1rem;
+  border: 0.15em solid currentColor;
+
+  display: grid;
+  place-content: center;
+
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  transform: scale(0);
+  box-shadow: inset 1rem 1rem ;
+
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+input, select {
+  padding: 0 4px;
+  border: solid black 2px;
+}
+
+
+
+
+*:focus-visible {
+  outline: 2px dashed black;
+  outline-offset: 2px;
+}
+
+/* Doesn't work? It's supposed to hide the focus outline if focus is from click instead of tab */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:root.dark ::-webkit-calendar-picker-indicator  {
+  filter: invert(1)
+}
+
+* {
+  border-color: black;
+}
+
+:root.dark * {
+  border-color: white;
+}
