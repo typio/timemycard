@@ -119,11 +119,11 @@ const computedTotalOTHours = computed(() =>
         </div>
 
         <div class="print-area">
-            <div class="print-header hidden flex-col border-b-[1px] ">
+            <div class="text-left print-header hidden flex-col border-b-[1px] ">
                 <!-- TODO: Replace inline svg with TextLogo.vue -->
-                <div>
+                <div class="w-56 mx-auto mt-2">
                     <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 824.13 248.9">
-                        <g id="Layer_1-2" data-name="Layer 1" class="fill-black dark:fill-white">
+                        <g id="Layer_1-2" data-name="Layer 1" class="fill-black">
                             <g>
                                 <path class="cls-1 "
                                     d="m18.57,45.82l-1.76,2.64c-6.85-3.02-12.5-9.76-12.5-19.34,0-13.16,11.22-24.63,29.05-24.63,15.5,0,39.77,13.1,56.5,13.1,3.93,0,7.72-1.87,7.72-5.9,0-6.44-8.36-7.3-13.98-8.06V.12c17.15-1.3,30.54,8.11,30.54,21.55s-11.64,20.27-24.88,20.27h-.17v22.07l12.24,12.24-12.24,12.24v28.02c8.95-6.03,15.53-14.89,19.11-24.11h3.51c.02.59.03,1.19.03,1.78,0,27.99-23.4,50.25-53.14,50.25S0,121.13,0,87.24c0-22.48,16.01-46.61,43.18-51.09l1.76,2.64c-3.14,2.12-12.72,9.28-18.51,21.69l40.36-17.2v55.66s-32.32,13.6-32.32,13.6c7.27,7.24,17.31,11.77,29.15,11.77,7.53,0,14.36-1.78,20.35-4.79v-31.22l-12.05-12.05,12.05-12.05v-22.63c-17.4-2.1-49.15-12.41-57.76-12.41-6.36,0-12.11,3.19-12.11,9.54,0,3.5,2,5.96,4.48,7.13Zm3.28,35.53c0,10.2,3.33,19.8,9.2,27.33l12.08-5.15v-44.83s-19.12,8.07-19.12,8.07c-1.34,4.35-2.16,9.21-2.16,14.58Z" />
@@ -153,9 +153,6 @@ const computedTotalOTHours = computed(() =>
                         </g>
                     </svg>
                 </div>
-                <a class="w-56 mt-6" href="https://timemycard.com">
-                    <TextLogo />
-                </a>
                 <p v-if="calculatorStore.name">{{ calculatorStore.name }}</p>
                 <p v-if="calculatorStore.date">{{ new Date(calculatorStore.date).toLocaleDateString(undefined, {
                     timeZone:
