@@ -9,7 +9,7 @@ const props = defineProps(['cardI'])
 // Mirror the store state to make changes easier
 const times = reactive(calculatorStore?.timeCards[props.cardI].days)
 
-const selectText = (e: { target: { select: () => void; focus: () => void; }; }) => {
+const selectText = (e: any) => {
     e.target.select();
     e.target.focus();
 };
@@ -72,7 +72,7 @@ console.log(computedTotalOTHours.value)
             <div class="w-2/6 flex flex-row relative">
                 <input type="text" class="w-full py-1 my-1 h-9 dark:border-white dark:bg-black" 
                     :value="displayTimes[dayI].in" @focus="selectText"
-                    @blur="updateTime(dayI, 'in', $event?.target?.value)">
+                    @blur="updateTime(dayI, 'in', ($event?.target as HTMLInputElement)?.value)">
                 <button tabindex="-1"
                     class="w-16 absolute right-0 h-9 border-2  border-black dark:border-white dark:bg-black my-1"
                     v-if="!calculatorStore.settings.h24" @click="cycleAMPM(day.in)">
@@ -82,7 +82,7 @@ console.log(computedTotalOTHours.value)
             <div class="w-2/6 flex flex-row relative">
                 <input type="text" class="w-full py-1 my-1 h-9 dark:border-white dark:bg-black"
                     :value="displayTimes[dayI].out" @focus="selectText"
-                    @blur="updateTime(dayI, 'out', $event?.target?.value)">
+                    @blur="updateTime(dayI, 'out', ($event?.target as HTMLInputElement)?.value)">
                 <button class="w-16 absolute right-0 h-9 border-2  border-black dark:border-white dark:bg-black my-1"
                     v-if="!calculatorStore.settings.h24" tabindex="-1" @click="cycleAMPM(day.out)">
                     {{ day.out.amPm }}
