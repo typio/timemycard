@@ -6,10 +6,14 @@
 
   <link rel="shortcut icon" href="logo.svg" type="image/x-icon">
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+  <script type="text/javascript">
+    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  </script>
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QK157R10NJ"></script>
@@ -26,16 +30,12 @@
     crossorigin="anonymous"></script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Time Card Calculator</title>
+  <title>Time My Card</title>
 </head>
 
 <body>
   <div id="app"></div>
   <script type="module" src="/src/main.ts"></script>
 </body>
-
-<style>
-
-</style>
 
 </html>
