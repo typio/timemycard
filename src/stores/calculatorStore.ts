@@ -31,7 +31,7 @@ export type Settings = {
     minHoursPerDay: number,
 }
 
-const STORAGE_KEY = 'calculatorAppState';
+const STORAGE_KEY = 'timeMyCardAppState';
 
 function saveState(state) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
@@ -103,31 +103,25 @@ const clearFields = (store) => {
 }
 
 const setDaysPerWeek = (store, dayAmount: number) => {
-    if (dayAmount < 1 || dayAmount > 7) return; // Prevent setting days to less than 1
+    if (dayAmount < 1 || dayAmount > 7) return
 
     store.timeCards.forEach(card => {
-        const currentLength = card.days.length;
+        // Make BIG
+        while (card.days.length < dayAmount)
+            card.days.push({
+                in: { hours: undefined, minutes: undefined, amPm: AMPM.am },
+                out: { hours: undefined, minutes: undefined, amPm: AMPM.pm },
+            });
 
-        if (dayAmount > currentLength) {
-            for (let i = currentLength; i < dayAmount; i++) {
-                card.days.push({
-                    in: { hours: undefined, minutes: undefined, amPm: AMPM.am },
-                    out: { hours: undefined, minutes: undefined, amPm: AMPM.pm },
-                });
-            }
-        } else if (dayAmount < currentLength) {
-            card.days.length = dayAmount;
-        }
+        // Make small
+        card.days.length = dayAmount
     });
 }
-
 
 calculatorStore.addWeek = () => addWeek(calculatorStore);
 calculatorStore.removeWeek = () => removeWeek(calculatorStore);
 calculatorStore.clearFields = () => clearFields(calculatorStore);
 calculatorStore.setDaysPerWeek = (dayAmount) => setDaysPerWeek(calculatorStore, dayAmount);
-
-
 
 watch(calculatorStore, (newState) => {
     saveState(newState);
