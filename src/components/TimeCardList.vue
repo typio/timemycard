@@ -1,5 +1,6 @@
 <script setup lang="ts" >
 import TimeCard from "./TimeCard.vue"
+import TextLogo from "./TextLogo.vue";
 import { calculatorStore } from '../stores/calculatorStore.ts'
 import { calculateTime, daysOfWeek, decimalToHM } from '../utils'
 import { computed } from "vue";
@@ -20,27 +21,27 @@ const computedTotalOTHours = computed(() =>
 
 <template >
     <div class="mt-8 max-w-5xl mx-auto">
-        <div class="border-b-[1px] border-black dark:border-white ">
+        <div class=" ">
             <div class="flex flex-row justify-between ">
                 <button
-                    class="py-2 px-4 border-[1px] border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+                    class="py-2 px-4 border-[1px] border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
                     @click="calculatorStore.clearFields()">
                     Clear Fields
                 </button>
                 <div class="flex flex-row gap-6">
                     <button
-                        class="w-36 py-2 px-4 border-[1px] border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+                        class="w-36 py-2 px-4 border-[1px] border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
                         @click="calculatorStore.addWeek()">
                         Add Week
                     </button>
                     <button
-                        class="w-36 py-2 px-4 border-[1px] border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+                        class="w-36 py-2 px-4 border-[1px] border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
                         @click="calculatorStore.removeWeek()">
                         Remove Week
                     </button>
                 </div>
                 <button
-                    class="py-2 px-4 border-[1px] border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+                    class="py-2 px-4 border-[1px] border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
                     @click="printPage">
                     Print
                 </button>
@@ -49,8 +50,8 @@ const computedTotalOTHours = computed(() =>
             <div class="flex flex-row justify-around mt-4">
                 <div class="flex flex-row place-items-center justify-center w-1/3">
                     <label class="mr-4" for="daysPerWeek">Days per Week</label>
-                    <input class="bg-white dark:bg-black dark:border-white dark:outline-white" type="number"
-                        id="daysPerWeek" min="1" max="7" :value="calculatorStore.timeCards.at(0).days.length"
+                    <input class="w-11 bg-white dark:bg-black dark:border-white dark:outline-white" type="number"
+                        id="daysPerWeek" min="1" max="7" :value="calculatorStore.timeCards[0]?.days.length"
                         @input="calculatorStore.setDaysPerWeek(($event?.target as HTMLInputElement).value)">
                 </div>
                 <div class="flex flex-row place-items-center justify-center w-1/3">
@@ -64,7 +65,7 @@ const computedTotalOTHours = computed(() =>
                 </div>
                 <div class="flex flex-row place-items-center justify-center w-1/3">
                     <label class="mr-4" for="firstDay">First Day of Week</label>
-                    <select class="bg-white dark:bg-black dark:border-white dark:outline-white" name="" id="firstDay"
+                    <select class="w-28 bg-white dark:bg-black dark:border-white dark:outline-white" name="" id="firstDay"
                         v-model="calculatorStore.settings.firstDay">
                         <option v-for="(day, dayI) in daysOfWeek[calculatorStore.settings.dayNames]" :value="dayI">
                             {{ day }}
@@ -73,39 +74,54 @@ const computedTotalOTHours = computed(() =>
                 </div>
             </div>
             <div class="flex flex-row justify-around place-items-center mt-4 h-8">
-                <div class="flex flex-row w-1/2 justify-around">
-                    <div class="flex flex-row place-items-center">
-                        <label class="select-none mr-4" for="h24">24 Hour Time</label>
-                        <input
-                            class="bg-white dark:bg-black dark:border-white dark:outline-white shadow-black dark:shadow-white"
-                            type="checkbox" id="h24" v-model="calculatorStore.settings.h24">
+                <div class="flex flex-row w-2/3 ">
+
+
+                    <div class="flex flex-row w-1/2 justify-center place-items-center">
+                        <label class="select-none mr-4" for="minHours">Minimum Daily Hours</label>
+                        <input class="w-11 bg-white dark:bg-black dark:border-white dark:outline-white" type="number"
+                            id="minHours" :value="calculatorStore.settings.minHoursPerDay" max="24"
+                            @input="calculatorStore.settings.minHoursPerDay = Math.abs(parseFloat(($event?.target as HTMLInputElement)?.value) || 0)">
                     </div>
 
-                    <div class="flex flex-row place-items-center">
+                    <div class="flex flex-row w-1/2 place-items-center place-content-center">
                         <label class="select-none mr-4" for="hasOT">OT</label>
                         <input
                             class="bg-white dark:bg-black dark:border-white dark:outline-white shadow-black dark:shadow-white"
                             type="checkbox" id="hasOT" v-model="calculatorStore.settings.hasOT">
                     </div>
                 </div>
-                <div class="w-1/2">
+                <div class="w-1/3">
                     <div class="flex flex-row place-items-center " v-if="calculatorStore.settings.hasOT">
-                        <label class="select-none mr-4" for="hoursBeforeOT">Hours per Day before OT</label>
-                        <input class="bg-white dark:bg-black dark:border-white dark:outline-white" id="hoursBeforeOT"
-                            type="text" :value="calculatorStore.settings.OTHours"
-                            @input="calculatorStore.settings.OTHours = parseFloat(($event?.target as HTMLInputElement)?.value) || 8">
+                        <label class="select-none mr-4" for="hoursBeforeOT">Daily Hours before OT</label>
+                        <input class="w-11  bg-white dark:bg-black dark:border-white dark:outline-white" id="hoursBeforeOT"
+                            type="number" :value="calculatorStore.settings.OTHours" max="24" min="1"
+                            @input="calculatorStore.settings.OTHours = Math.abs(parseFloat(($event?.target as HTMLInputElement)?.value) || 1)">
                     </div>
                 </div>
             </div>
-            <div class="flex flex-row justify-center place-items-center mt-4 mb-8">
-                <label class="select-none mr-4 " for="minHours">Minimum Hours per Day</label>
-                <input class="bg-white dark:bg-black dark:border-white dark:outline-white" type="number" id="minHours"
-                    :value="calculatorStore.settings.minHoursPerDay"
-                    @input="calculatorStore.settings.minHoursPerDay = parseFloat(($event?.target as HTMLInputElement)?.value) || 0">
+            <div class="flex flex-row  place-items-center mt-4 h-8">
+                <div class="flex flex-row w-1/2 place-items-center place-content-center">
+                    <label class="select-none mr-4" for="h24">24 Hour Time</label>
+                    <input
+                        class="bg-white dark:bg-black dark:border-white dark:outline-white shadow-black dark:shadow-white"
+                        type="checkbox" id="h24" v-model="calculatorStore.settings.h24">
+                </div>
+
+                <div class="flex flex-row w-1/2 justify-center place-items-center">
+                    <button
+                        class="py-2 px-4 w-52 border-[1px] border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
+                        @click="calculatorStore.settings.showHM = !calculatorStore.settings.showHM">
+                        {{ calculatorStore.settings.showHM ? "Decimal Time Format" : "hh:mm Time Format" }}
+                    </button>
+                </div>
+
             </div>
         </div>
 
-        <div class="flex flex-col mt-8 ">
+        <div class="my-4 h-1 border-b-[1px] border-black dark:border-white"></div>
+
+        <div class="flex flex-col font-serif">
             <div class="flex flex-row">
                 <label class="w-16 text-left" for="name">Name</label>
                 <input class="w-56 bg-white dark:bg-black dark:border-white dark:outline-white" type="text" id="name"
@@ -120,71 +136,49 @@ const computedTotalOTHours = computed(() =>
 
         <div class="print-area">
             <div class="text-left print-header hidden flex-col border-b-[1px] ">
-                <!-- TODO: Replace inline svg with TextLogo.vue -->
-                <div class="w-56 mx-auto mt-2">
-                    <svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 824.13 248.9">
-                        <g id="Layer_1-2" data-name="Layer 1" class="fill-black">
-                            <g>
-                                <path class="cls-1 "
-                                    d="m18.57,45.82l-1.76,2.64c-6.85-3.02-12.5-9.76-12.5-19.34,0-13.16,11.22-24.63,29.05-24.63,15.5,0,39.77,13.1,56.5,13.1,3.93,0,7.72-1.87,7.72-5.9,0-6.44-8.36-7.3-13.98-8.06V.12c17.15-1.3,30.54,8.11,30.54,21.55s-11.64,20.27-24.88,20.27h-.17v22.07l12.24,12.24-12.24,12.24v28.02c8.95-6.03,15.53-14.89,19.11-24.11h3.51c.02.59.03,1.19.03,1.78,0,27.99-23.4,50.25-53.14,50.25S0,121.13,0,87.24c0-22.48,16.01-46.61,43.18-51.09l1.76,2.64c-3.14,2.12-12.72,9.28-18.51,21.69l40.36-17.2v55.66s-32.32,13.6-32.32,13.6c7.27,7.24,17.31,11.77,29.15,11.77,7.53,0,14.36-1.78,20.35-4.79v-31.22l-12.05-12.05,12.05-12.05v-22.63c-17.4-2.1-49.15-12.41-57.76-12.41-6.36,0-12.11,3.19-12.11,9.54,0,3.5,2,5.96,4.48,7.13Zm3.28,35.53c0,10.2,3.33,19.8,9.2,27.33l12.08-5.15v-44.83s-19.12,8.07-19.12,8.07c-1.34,4.35-2.16,9.21-2.16,14.58Z" />
-                                <path class="cls-1"
-                                    d="m174.08,127.55l-26.36,18.46-17.58-15.82-6.15,4.39-2.64-3.51,11.42-7.91v-48.33l-6.15-7.91-7.03,4.39-2.64-3.51,24.61-16.7,14.06,16.7v55.37l6.15,6.15,7.91-5.27,4.39,3.51Zm-29.66-116.57l15.63,17.8-17.51,15.38-15.63-17.8,17.51-15.38Z" />
-                                <path class="cls-1"
-                                    d="m243.95,147.76l-18.17-15.81,7.7-7.04v-45.19l-12.72-11.58-8.01,4.85v51.91l7.91,7.03-17.58,15.82-21.09-16.7,7.03-6.15v-48.7l-7.03-7.91-7.03,4.39-2.64-3.52,25.49-17.58,13.48,15.04,24.09-15.04,18.24,15.74,25.21-15.74,19.04,16.42,5.97-4.84,3.23,3.99-9.06,7.35v46.06l8.57,8.74,7.88-5.93.12,6.72-27.19,17.65-18.17-15.81,7.7-7.04v-45.19l-12.72-11.58-9.64,5.84v49.04l9.52,8.49-20.14,16.24Z" />
-                                <path class="cls-1"
-                                    d="m315.84,129.27l8.67-7.03v-48.3l43.94-22.85,18.46,28.12v.88l-39.55,24.61v7.91l21.97,14.94,20.21-15.82,2.64,4.39-37.79,30.76-27.2-20.2-8.11,6.58-3.23-3.99Zm49.94-42.55l-14.9-21.57-3.52,1.98v31.26l18.42-11.67Z" />
-                                <path class="cls-1"
-                                    d="m567.22,19.8l5.78-4.8,1.5,1.77-21.81,22.78c-7.81-3.15-15.29-6.79-22.39-10.85v98.57c17.12-2.24,29.76-13.52,36.1-26.18h3.51c-1.34,27.46-23.29,47.25-51.67,47.25-35.07,0-62.49-31.59-62.49-66.6s23.39-60.13,50-69.17l1.76,2.64c-8.11,4.19-14.73,10.43-19.61,18.41l48.3-29.5c9.19,6.73,19.24,12,31.02,15.7Zm-74.01,75.34c0-19.54,0-39.08,0-58.62l-9.73,5.94c-3.43,8.58-5.25,18.58-5.25,29.72,0,9.89,1.61,19.21,4.84,27.28l10.14-4.32Zm30.84,32.52c.34,0,.67,0,1.01,0V25.58c-2.3-1.42-4.56-2.88-6.77-4.38l-1.42.87v68.49s-31.79,13.38-31.79,13.38c7.25,14.31,20.24,23.74,38.97,23.74Z" />
-                                <path class="cls-1"
-                                    d="m582.93,121.85c0-9.81,7.55-19.14,21.17-26.41-8.44-3.65-14.96-8.95-14.96-17.43s6.03-12.67,11.45-15.5l20.21-10.55,27.05,17.45,7.4-6,3.23,3.99-9.57,7.76v46.23l8.79,8.79,7.91-5.27.87,3.52-25.52,17.52-14-14.03-19.35,14.07c-11.62-1.51-24.7-10.45-24.7-24.16Zm11.51-44.9c0,11.76,19.38,16.63,31.64,19.47v-17.2l-21.64-13.33c-5.4,2.87-10,6.23-10,11.06Zm12.99,19.82c-1.21,1.79-2.33,4.92-2.33,8.41,0,10.4,5.78,25.03,17.17,25.03,1.29,0,2.58-.2,3.81-.58v-27.75c-5.84-1.34-12.56-2.88-18.65-5.11Z" />
-                                <path class="cls-1"
-                                    d="m727.65,126.2l-27.37,19.8-20.14-15.82-6.15,4.39-2.64-3.51,11.42-7.91v-48.33l-6.15-7.91-7.03,4.39-2.64-3.51,24.61-16.7,13.44,14.45,12.78-14.51h1.89c1.75,2.74,4.88,4.53,8.27,4.53,3.79,0,6.71-2.07,8.29-4.53h5.47c-2.15,22.73-12.78,25.61-18.24,25.61-4.01,0-10.46-1.83-16.38-7.56v54.06l7.24,5.71,9.9-6.75,3.42,4.09Z" />
-                                <path class="cls-1"
-                                    d="m754.63,42.79l-3.74.64V10.55s63.23,55.63,63.23,55.63l6.78-5.5,3.23,3.99-7.84,6.36-.09,51.96-40.2,23.74-26.45-18.14v-56.36l22.33-13.73-17.26-15.72Zm18.58,76.19l19.43,13.51v-55.09l-19.43-17.7v59.28Z" />
-                            </g>
-                            <g>
-                                <path class="cls-1"
-                                    d="m447.71,247.92c-.21-1.3-.31-2.8-.31-4.49s.05-3.39.16-5.11c.1-1.72.22-3.38.35-4.99.13-1.61.25-3.02.35-4.21.1-3.02.22-6.24.35-9.67.13-3.43.35-6.66.66-9.67-1.04,1.66-1.91,3.16-2.61,4.48s-1.42,2.64-2.15,3.94c-.73,1.3-1.55,2.68-2.46,4.13-.91,1.46-2.04,3.12-3.39,4.99-.21.26-.31.55-.31.86s-.01.61-.04.9c-.03.29-.12.52-.27.7-.16.18-.47.27-.94.27-.52,0-1.14-.16-1.87-.47-.73-.31-1.25-.75-1.56-1.33-.73-1.4-1.4-3.28-2.03-5.62-.62-2.34-1.21-4.78-1.75-7.33s-1.04-5.02-1.48-7.41c-.44-2.39-.82-4.32-1.13-5.77-.36,2.13-.66,4.55-.9,7.25-.23,2.71-.39,5.5-.47,8.39-.08,2.89-.08,5.75,0,8.58.08,2.83.25,5.42.51,7.76,0,.16.05.56.16,1.21.1.65.21,1.35.31,2.11.1.75.21,1.46.31,2.11.1.65.18,1.05.23,1.21,0,.31.01.71.04,1.21.03.49,0,.95-.08,1.37-.08.42-.22.78-.43,1.09-.21.31-.52.47-.94.47-.94,0-1.74-.29-2.42-.86-.68-.57-1.29-1.27-1.83-2.11-.55-.83-1.04-1.73-1.48-2.69-.44-.96-.9-1.81-1.36-2.53-.05-.05-.17-.21-.35-.47-.18-.26-.38-.53-.58-.82-.21-.29-.42-.56-.62-.82-.21-.26-.34-.42-.39-.47-.62-.73-1.14-1.35-1.56-1.87-.42-.52-.82-1.03-1.21-1.52-.39-.49-.77-1-1.13-1.52-.36-.52-.78-1.14-1.25-1.87l-.78-4.91c-.05-.47.1-.79.47-.97.36-.18.68-.27.94-.27.99,0,1.87.29,2.65.86.78.57,1.49,1.27,2.15,2.11.65.83,1.3,1.68,1.95,2.54.65.86,1.34,1.55,2.07,2.07-.16-4.37-.1-8.78.16-13.22.26-4.45.42-8.88.47-13.3-.83,0-1.63.21-2.38.62-.75.42-1.5.86-2.22,1.33-.73.47-1.5.91-2.3,1.33-.81.42-1.68.62-2.61.62-.73.1-1.35-.08-1.87-.55-.52-.47-.96-1.08-1.33-1.83-.36-.75-.65-1.57-.86-2.46-.21-.88-.36-1.69-.47-2.42-.05-.42-.06-.73-.04-.94.03-.21.22-.47.58-.78,2.03-1.2,4.12-2.26,6.28-3.2,2.16-.94,4.25-2.13,6.28-3.59.47-.31.91-.7,1.33-1.17.42-.47.83-.9,1.25-1.29.42-.39.86-.73,1.33-1.01.47-.29,1.01-.43,1.64-.43.68,0,1.3.34,1.87,1.01.57.68,1.06,1.47,1.48,2.38.42.91.74,1.82.98,2.73.23.91.38,1.6.43,2.07.1.73.14,1.43.12,2.11-.03.68.01,1.38.12,2.11,0,.05.08.51.23,1.36.16.86.35,1.94.58,3.24.23,1.3.49,2.7.78,4.21.29,1.51.56,2.91.82,4.21.26,1.3.51,2.39.74,3.28.23.88.43,1.33.58,1.33,1.66-2.03,3.07-4.22,4.21-6.59,1.14-2.37,2.17-4.81,3.08-7.33.91-2.52,1.74-5.11,2.5-7.76.75-2.65,1.55-5.3,2.38-7.96.1-.47.22-1.16.35-2.07.13-.91.3-1.83.51-2.77.21-.94.49-1.74.86-2.42.36-.67.86-1.01,1.48-1.01.47,0,1.08.29,1.83.86.75.57,1.48,1.25,2.18,2.03.7.78,1.33,1.59,1.87,2.42.55.83.84,1.53.9,2.11.05.57-.05,1.6-.31,3.08-.26,1.48-.56,3.04-.9,4.68-.34,1.64-.68,3.16-1.01,4.56-.34,1.4-.53,2.34-.58,2.81,0,3.02-.04,5.89-.12,8.62-.08,2.73-.18,5.41-.31,8.03-.13,2.63-.27,5.28-.43,7.96-.16,2.68-.31,5.5-.47,8.46,0,.1.21.26.62.47.21.1.44.21.7.31.16,1.56.25,2.9.27,4.02.03,1.12-.03,2.11-.16,2.96-.13.86-.36,1.61-.7,2.26-.34.65-.79,1.31-1.37,1.99-.31.36-.73.78-1.25,1.25-.52.47-1.04.83-1.56,1.09-.52.26-.99.38-1.4.35-.42-.03-.65-.35-.7-.97Z" />
-                                <path class="cls-1"
-                                    d="m454.33,224.05c0-.21.08-.78.23-1.72.16-.94.38-1.92.66-2.96.29-1.04.62-1.98,1.01-2.81.39-.83.82-1.25,1.29-1.25h.16c0,.16.05.56.16,1.21.1.65.21,1.11.31,1.36,0,.05.04.22.12.51.08.29.18.61.31.97.13.36.23.7.31,1.01.08.31.12.5.12.55,0,.11-.03.39-.08.86-.05.47-.12.97-.19,1.52-.08.55-.14,1.05-.19,1.52-.05.47-.08.75-.08.86v.94c0,1.2.55,2.26,1.64,3.2,1.09.94,2.39,1.74,3.9,2.42,1.51.68,3.04,1.18,4.6,1.52,1.56.34,2.83.51,3.82.51,2.5,0,4.82-.44,6.98-1.33,2.16-.88,4.03-2.09,5.62-3.63,1.59-1.53,2.85-3.35,3.78-5.46.94-2.11,1.4-4.41,1.4-6.9,0-1.51-.14-3.03-.43-4.56-.29-1.53-.72-3.05-1.29-4.56-.1,0-.21.07-.31.2-.1.13-.16.22-.16.27-.73,2.18-1.37,4.2-1.91,6.04-.55,1.85-1.27,3.46-2.18,4.84-.91,1.38-2.15,2.46-3.7,3.24-1.56.78-3.72,1.17-6.47,1.17-2.18,0-4.16-.66-5.93-1.99-1.77-1.33-3.29-2.99-4.56-4.99-1.27-2-2.26-4.15-2.96-6.43-.7-2.29-1.05-4.39-1.05-6.32,0-1.4.18-2.74.55-4.02.36-1.27.78-2.54,1.25-3.78.47-1.25.94-2.5,1.4-3.74.47-1.25.78-2.55.94-3.9v-4.45c0-.57.26-.86.78-.86.47,0,.98.27,1.52.82.55.55,1.07,1.2,1.56,1.95.49.75.94,1.53,1.33,2.34.39.81.66,1.44.82,1.91v2.73c0,1.56-.21,3.08-.62,4.56-.42,1.48-.86,2.95-1.33,4.41-.47,1.46-.91,2.92-1.33,4.41-.42,1.48-.62,3-.62,4.56,0,.62.17,1.17.51,1.64.34.47.77.88,1.29,1.25.52.36,1.08.64,1.68.82.6.18,1.16.27,1.68.27,2.24,0,4.12-.51,5.65-1.52,1.53-1.01,2.74-2.31,3.63-3.9.88-1.58,1.52-3.37,1.91-5.34.39-1.98.58-3.95.58-5.93,0-1.3-.21-2.55-.62-3.74-.42-1.2-.87-2.35-1.36-3.47-.49-1.12-.95-2.24-1.37-3.35-.42-1.12-.62-2.22-.62-3.31,0-.26.13-.51.39-.74.26-.23.55-.35.86-.35h.08c.57.57,1.26,1.39,2.07,2.46.81,1.07,1.57,1.86,2.3,2.38.99,1.98,2.08,4.29,3.28,6.94,1.2,2.65,2.34,5.38,3.43,8.19,1.09,2.81,2.05,5.58,2.89,8.31.83,2.73,1.4,5.19,1.72,7.37.05.36.09.94.12,1.72.03.78.06,1.59.12,2.42.05.83.09,1.6.12,2.3.03.7.04,1.16.04,1.37,0,2.45-.69,4.75-2.07,6.9-1.38,2.16-3.12,4.04-5.23,5.66-2.11,1.61-4.42,2.89-6.94,3.82-2.52.94-4.9,1.4-7.14,1.4-2.65,0-5.2-.55-7.64-1.64-2.44-1.09-4.58-2.57-6.4-4.45-1.82-1.87-3.29-4.03-4.41-6.47s-1.68-5.02-1.68-7.72Z" />
-                            </g>
-                            <path class="cls-1"
-                                d="m409.47,182.05c-.82.7-3.2,2.72-6.2,2.49-2.72-.2-5.24-2.21-5.35-3.17-.02-.15.06-.31.24-.49,1.2-1.25,11.41-11.81,13.65-17.65s4.72-15.52,4.69-19.77c-.04-4.25.33-4.96,4.64-8.36,3.17-2.5,8.75,5.02,10.15,6.67,15.42,18.22,51.27,18.59,51.95,28.76.03.51.17,2.56-1.12,3.93-2.14,2.26-6.73,1.08-8.19.71-3.68-.94-6.09-2.76-7.59-3.83-6.27-4.49-8.03-3.98-16.88-9.31-17.18-10.33-19.58-19.23-24.15-17.79-7.8,2.46-7.1,30.4-15.83,37.81Z" />
-                        </g>
-                    </svg>
+                <div class="h-12 mt-4 flex mx-auto object-contain">
+                    <TextLogo />
                 </div>
-                <p v-if="calculatorStore.name">{{ calculatorStore.name }}</p>
-                <p v-if="calculatorStore.date">{{ new Date(calculatorStore.date).toLocaleDateString(undefined, {
-                    timeZone:
-                        'UTC'
-                }) }}</p>
+                <div class="font-serif">
+                    <p v-if="calculatorStore.name">{{ calculatorStore.name }}</p>
+                    <p v-if="calculatorStore.date">{{ new Date(calculatorStore.date).toLocaleDateString(undefined, {
+                        timeZone:
+                            'UTC'
+                    }) }}</p>
+                </div>
             </div>
             <div class="mt-4" v-for="(_, cardI) in calculatorStore?.timeCards">
                 <TimeCard :card-i="cardI" />
             </div>
 
-            <div class="border-b-[1px]">
+            <div class="mt-4 border-[1px]">
                 <div class="my-4 max-w-lg mx-auto flex flex-row  place-content-evenly ">
                     <div class="flex flex-row place-items-center">
-                        <p class="mr-4">Total</p>
-                        <div class="flex flex-col">
-                            <p>{{ (computedTotalWithoutOTHours + computedTotalOTHours)?.toFixed(2) }}</p>
-                            <p>{{ decimalToHM(computedTotalWithoutOTHours + computedTotalOTHours) }}</p>
-                        </div>
+                        <p class="mr-4 font-serif ">Total</p>
+                        <p>
+                            {{ calculatorStore.settings.showHM ?
+                                decimalToHM(computedTotalWithoutOTHours + computedTotalOTHours) :
+                                (computedTotalWithoutOTHours + computedTotalOTHours)?.toFixed(2)
+                            }}
+                        </p>
                     </div>
                     <div class="flex flex-row place-items-center" v-if="calculatorStore.settings.hasOT">
-                        <p class="mr-4">Regular</p>
-                        <div class="flex flex-col">
-                            <p>{{ computedTotalWithoutOTHours?.toFixed(2) }}</p>
-                            <p>{{ decimalToHM(computedTotalWithoutOTHours) }}</p>
-                        </div>
+                        <p class="mr-4 font-serif ">Regular</p>
+                        <p>
+                            {{ calculatorStore.settings.showHM ?
+                                decimalToHM(computedTotalWithoutOTHours) :
+                                (computedTotalWithoutOTHours)?.toFixed(2)
+                            }}
+                        </p>
                     </div>
                     <div class="flex flex-row place-items-center" v-if="calculatorStore.settings.hasOT">
-                        <p class="mr-4">OT</p>
-                        <div class="flex flex-col">
-                            <p>{{ computedTotalOTHours?.toFixed(2) }} </p>
-                            <p>{{ decimalToHM(computedTotalOTHours) }} </p>
-                        </div>
+                        <p class="mr-4 font-serif">OT</p>
+                        <p class="">
+                            {{ calculatorStore.settings.showHM ?
+                                decimalToHM(computedTotalOTHours) :
+                                (computedTotalOTHours)?.toFixed(2)
+                            }}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -219,6 +213,14 @@ const computedTotalOTHours = computed(() =>
         position: relative;
         overflow: hidden;
         visibility: visible;
+        width: 100vw;
+    }
+
+    * {
+        fill: black !important;
+        border-color: black !important;
+        outline-color: black !important;
+        background-color: white !important;
     }
 
     .print-area {

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -11,13 +11,18 @@
   color: black;
   background-color: #ffffff;
 
-  font-weight: 400;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+input,
+select {
+  padding: 2px 0 2px 2px;
+  border: solid black 1px;
+}
+
 
 input[type=checkbox] {
   appearance: none;
@@ -31,6 +36,8 @@ input[type=checkbox] {
   display: grid;
   place-content: center;
 
+  padding: 0px;
+
 }
 
 input[type="checkbox"]::before {
@@ -38,7 +45,7 @@ input[type="checkbox"]::before {
   width: 0.5rem;
   height: 0.5rem;
   transform: scale(0);
-  box-shadow: inset 1rem 1rem ;
+  box-shadow: inset 1rem 1rem;
 
 }
 
@@ -46,25 +53,14 @@ input[type="checkbox"]:checked::before {
   transform: scale(1);
 }
 
-input, select {
-  padding: 0 4px;
-  border: solid black 2px;
-}
-
-
-
 
 *:focus-visible {
-  outline: 2px dashed black;
-  outline-offset: 2px;
+  outline: 2px solid black;
+  outline-offset: 0px;
+  z-index: 10;
 }
 
-/* Doesn't work? It's supposed to hide the focus outline if focus is from click instead of tab */
-*:focus:not(:focus-visible) {
-  outline: none;
-}
-
-:root.dark ::-webkit-calendar-picker-indicator  {
+:root.dark ::-webkit-calendar-picker-indicator {
   filter: invert(1)
 }
 

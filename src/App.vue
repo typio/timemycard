@@ -4,7 +4,7 @@ import TimeCardList from './components/TimeCardList.vue'
 </script>
 
 <template>
-  <div class="px-[3%] text-center bg-white dark:bg-black text-black dark:text-white">
+  <div class="px-[3%] text-center bg-white dark:bg-black text-black dark:text-white transition-colors">
     <div class="min-h-[100vh]">
       <Header />
 

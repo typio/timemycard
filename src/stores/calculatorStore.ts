@@ -23,6 +23,7 @@ export type TimeCard = {
 export type Settings = {
     firstDay: number,
     dayNames: number,
+    showHM: boolean,
     h24: boolean,
     hasOT: boolean,
     OTPeriod: 'day' | 'week' | 'both' | 'california',
@@ -41,7 +42,17 @@ function loadState() {
     return savedState ? JSON.parse(savedState) : null;
 }
 
-const initialState = loadState() ?? {
+const initialState: {
+    name: string,
+    date: string | Date,
+    timeCards: [TimeCard],
+    settings: Settings,
+    addWeek?(): void,
+    removeWeek?(): void,
+    clearFields?(): void,
+    setDaysPerWeek?(number): void,
+
+} = loadState() ?? {
     name: '',
     date: '',
     timeCards: Array.from({ length: 1 }, () => {
@@ -58,6 +69,7 @@ const initialState = loadState() ?? {
     settings: {
         firstDay: 0,
         dayNames: 0,
+        showHM: false,
         h24: false,
         hasOT: true,
         OTPeriod: 'day',
