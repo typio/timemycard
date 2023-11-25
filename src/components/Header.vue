@@ -5,7 +5,7 @@ import DarkModeToggle from "./DarkModeToggle.vue"
 
 <template>
     <div
-        class="w-full h-32 flex flex-row border-b-[3px]  border-black dark:border-white border-double place-content-center place-items-center">
+        class="no-print w-full h-32 flex flex-row border-b-[3px]  border-black dark:border-white border-double place-content-center place-items-center">
         <div class="flex flex-row place-items-end w-full justify-around text-sm">
             <DarkModeToggle />
             <a class="w-56 mt-6" href="https://timemycard.com">
