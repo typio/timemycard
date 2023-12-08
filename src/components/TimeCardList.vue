@@ -21,27 +21,27 @@ const computedTotalOTHours = computed(() =>
 
 <template >
     <div class="mt-8 max-w-5xl mx-auto">
-        <div class=" ">
+        <div class="no-print">
             <div class="flex flex-row justify-between ">
                 <button
-                    class="py-2 px-4 border-[1px] border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
+                    class="py-2 px-4 border-[1px] border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black "
                     @click="calculatorStore.clearFields()">
                     Clear Fields
                 </button>
                 <div class="flex flex-row gap-6">
                     <button
-                        class="w-36 py-2 px-4 border-[1px] border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
+                        class="w-36 py-2 px-4 border-[1px] border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black "
                         @click="calculatorStore.addWeek()">
                         Add Week
                     </button>
                     <button
-                        class="w-36 py-2 px-4 border-[1px] border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
+                        class="w-36 py-2 px-4 border-[1px] border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black "
                         @click="calculatorStore.removeWeek()">
                         Remove Week
                     </button>
                 </div>
                 <button
-                    class="py-2 px-4 border-[1px] border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
+                    class="py-2 px-4 border-[1px] border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black "
                     @click="printPage">
                     Print
                 </button>
@@ -110,7 +110,7 @@ const computedTotalOTHours = computed(() =>
 
                 <div class="flex flex-row w-1/2 justify-center place-items-center">
                     <button
-                        class="py-2 px-4 w-52 border-[1px] border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
+                        class="py-2 px-4 w-52 border-[1px] border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black "
                         @click="calculatorStore.settings.showHM = !calculatorStore.settings.showHM">
                         {{ calculatorStore.settings.showHM ? "Decimal Time Format" : "hh:mm Time Format" }}
                     </button>
@@ -119,24 +119,24 @@ const computedTotalOTHours = computed(() =>
             </div>
         </div>
 
-        <div class="my-4 h-1 border-b-[1px] border-black dark:border-white"></div>
+        <div class="no-print my-4 h-1 border-b-[1px] border-black dark:border-white"></div>
 
-        <div class="flex flex-col font-serif">
+        <div class="no-print flex flex-col font-serif">
             <div class="flex flex-row">
                 <label class="w-16 text-left" for="name">Name</label>
-                <input class="w-56 bg-white dark:bg-black dark:border-white dark:outline-white" type="text" id="name"
+                <input class="w-56 pl-1 bg-white dark:bg-black dark:border-white dark:outline-white" type="text" id="name"
                     v-model="calculatorStore.name">
             </div>
             <div class="flex flex-row mt-2">
                 <label class="w-16 text-left" for="name" id="date">Date</label>
-                <input class="w-56 bg-white dark:bg-black dark:text-white dark:border-white dark:outline-white" type="date"
+                <input class="w-56 bg-white dark:bg-black dark:border-white dark:outline-white" type="date"
                     id="" v-model="calculatorStore.date">
             </div>
         </div>
 
         <div class="print-area">
-            <div class="text-left print-header hidden flex-col border-b-[1px] ">
-                <div class="h-12 mt-4 flex mx-auto object-contain">
+            <div class="text-left hidden print-header flex-col border-b-[3px] border-double ">
+                <div class="w-1/6 flex mx-auto object-contain">
                     <TextLogo />
                 </div>
                 <div class="font-serif">
@@ -183,7 +183,6 @@ const computedTotalOTHours = computed(() =>
                 </div>
             </div>
         </div>
-
     </div>
 </template>
 
@@ -202,6 +201,11 @@ const computedTotalOTHours = computed(() =>
     * {
         visibility: hidden;
         color: black;
+
+    }
+
+    .no-print, .no-print * {
+        display: none;
     }
 
     .print-header {
@@ -210,10 +214,8 @@ const computedTotalOTHours = computed(() =>
 
     .print-area,
     .print-area * {
-        position: relative;
-        overflow: hidden;
         visibility: visible;
-        width: 100vw;
+
     }
 
     * {
@@ -224,9 +226,7 @@ const computedTotalOTHours = computed(() =>
     }
 
     .print-area {
-        position: absolute;
-        left: 0;
-        top: 0;
+
     }
 }
 </style>

@@ -56,49 +56,53 @@ const computedTotalOTHours = computed(() => computedHours.value.reduce((a: any, 
 </script>
  
 <template>
-    <div class=" w-full text-center text-sm border-[1px]">
+    <div class=" w-full text-center text-sm border-[1px] whitespace-nowrap">
         <div class="flex flex-row font-serif text-base mt-2">
-            <h3 class="ml-[16.67%] w-2/6">In</h3>
-            <h3 class="w-2/6">Out</h3>
-            <h3 class="w-1/6">Hours</h3>
+            <div class="ml-[16.67%] w-3/6 flex flex-row">
+                <h3 class=" w-1/2">In</h3>
+                <h3 class="w-1/2">Out</h3>
+            </div>
+            <h3 class="w-1/3">Hours</h3>
         </div>
         <div class="flex flex-row  place-items-center" v-for="(day, dayI) in times" :key="dayI">
             <h3 class="w-1/6">
                 {{ daysOfWeek[calculatorStore.settings.dayNames][(dayI + calculatorStore.settings.firstDay) % 7] }}
             </h3>
-            <div class="w-2/6 flex flex-row relative">
-                <input type="text"
-                    class="w-full py-1 outline-1 outline-black outline border-0 h-9 text-center dark:outline-white dark:bg-black"
-                    :value="displayTimes[dayI].in" @focus="selectText"
-                    @blur="updateTime(dayI, 'in', ($event?.target as HTMLInputElement)?.value)">
+            <div class="w-3/6 flex flex-row">
+                <div class="w-1/2 flex flex-row relative">
+                    <input type="text"
+                        class="w-full py-1 outline-1 outline-black outline border-0 h-9 text-center dark:outline-white bg-white dark:bg-black"
+                        :value="displayTimes[dayI].in" @focus="selectText"
+                        @blur="updateTime(dayI, 'in', ($event?.target as HTMLInputElement)?.value)">
 
-                <button tabindex="-1"
-                    class="w-16 absolute right-0 h-9 border-l-[1px] z-[999] border-black dark:border-white bg-transparent"
-                    v-if="!calculatorStore.settings.h24" @click="cycleAMPM(day.in)">
-                    {{ day.in.amPm }}
-                </button>
-            </div>
-            <div class="w-2/6 flex flex-row relative">
-                <input type="text"
-                    class="w-full py-1 outline-1 outline-black outline border-0 h-9 text-center dark:outline-white dark:bg-black"
-                    :value="displayTimes[dayI].out" @focus="selectText"
-                    @blur="updateTime(dayI, 'out', ($event?.target as HTMLInputElement)?.value)">
+                    <button tabindex="-1"
+                        class="w-16 absolute right-0 h-9 border-l-[1px] z-[999] border-black dark:border-white bg-transparent"
+                        v-if="!calculatorStore.settings.h24" @click="cycleAMPM(day.in)">
+                        {{ day.in.amPm }}
+                    </button>
+                </div>
+                <div class="w-1/2 flex flex-row relative">
+                    <input type="text"
+                        class="w-full py-1 outline-1 outline-black outline border-0 h-9 text-center dark:outline-white bg-white dark:bg-black"
+                        :value="displayTimes[dayI].out" @focus="selectText"
+                        @blur="updateTime(dayI, 'out', ($event?.target as HTMLInputElement)?.value)">
 
-                <button
-                    class="w-16 absolute right-0 h-9 border-l-[1px] z-[999] border-black dark:border-white bg-transparent"
-                    v-if="!calculatorStore.settings.h24" tabindex="-1" @click="cycleAMPM(day.out)">
-                    {{ day.out.amPm }}
-                </button>
+                    <button
+                        class="w-16 absolute right-0 h-9 border-l-[1px] z-[999] border-black dark:border-white bg-transparent"
+                        v-if="!calculatorStore.settings.h24" tabindex="-1" @click="cycleAMPM(day.out)">
+                        {{ day.out.amPm }}
+                    </button>
+                </div>
             </div>
-            <div class="w-1/6 flex flex-row justify-around">
-                <p class="w-1/2">
+            <div class="w-1/3 flex flex-row ">
+                <p :class="calculatorStore.settings.hasOT ? 'w-1/3' : 'w-full'">
 
                     {{ calculatorStore.settings.showHM ?
                         decimalToHM(computedHours[dayI]?.withoutOT) :
                         (computedHours[dayI]?.withoutOT)?.toFixed(2)
                     }}
                 </p>
-                <p class="w-1/2" v-if="calculatorStore.settings.hasOT">
+                <p class="w-2/3 " v-if="calculatorStore.settings.hasOT">
                     {{ computedHours[dayI]?.OT ? (calculatorStore.settings.showHM ?
                         decimalToHM(computedHours[dayI]?.OT) :
                         (computedHours[dayI]?.OT)?.toFixed(2)) + ' OT' : '' }}
