@@ -54,8 +54,8 @@ const post = async (message, name, role) => {
                 <div class="h-36 flex overflow-hidden h- w-[100%] place-items-center " :key=testimonialI>
                     <div>
                         <p class="text-base text-zinc-900 dark:text-zinc-100">{{ testimonials[testimonialI].body }}</p>
-                        <h6 class="text-zinc-600 dark:text-zinc-400 font-sans text-sm uppercase font-bold mt-2">{{
-                            testimonials[testimonialI].author }}</h6>
+                        <p class="text-zinc-600 dark:text-zinc-400 font-sans text-sm uppercase font-bold mt-2">{{
+                            testimonials[testimonialI].author }}</p>
                     </div>
                 </div>
             </Transition>

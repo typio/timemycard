@@ -26,7 +26,8 @@ import TimeCardList from './components/TimeCardList.vue'
                     </div>
 
                     <!-- TimeCard Right -->
-                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9012705634493266"
+
+                    <ins aria-hidden="true" class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9012705634493266"
                         data-ad-slot="2538534477" data-ad-format="auto" data-full-width-responsive="true"></ins>
                 </div>
             </div>
