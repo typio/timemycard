@@ -23,13 +23,13 @@ const computedTotalOTHours = computed(() =>
     <div class="mt-8 max-w-5xl mx-auto">
         <div class="no-print ">
             <div class="">
-                <div class="flex flex-row justify-between ">
+                <div class="flex flex-col md:flex-row gap-2 justify-between ">
                     <button
-                        class="btn-primary"
+                        class="btn-primary place-self-center"
                         @click="calculatorStore.clearFields()">
                         Clear Fields
                     </button>
-                    <div class="flex flex-row gap-6">
+                    <div class="flex flex-row place-self-center gap-6">
                         <button
                             class="w-36 btn-primary"
                             @click="calculatorStore.addWeek()">
@@ -42,20 +42,20 @@ const computedTotalOTHours = computed(() =>
                         </button>
                     </div>
                     <button
-                        class="btn-primary"
+                        class="btn-primary place-self-center"
                         @click="printPage">
                         Print
                     </button>
                 </div>
 
                 <div class="flex flex-row justify-around mt-4">
-                    <div class="flex flex-row place-items-center justify-center w-1/3">
+                    <div class="flex flex-col md:flex-row place-items-center justify-center w-1/3">
                         <label class="mr-4" for="daysPerWeek">Days per Week</label>
                         <input class="w-11 bg-white dark:bg-black dark:border-white dark:outline-white" type="number"
                             id="daysPerWeek" min="1" max="7" :value="calculatorStore.timeCards[0]?.days.length"
                             @input="calculatorStore.setDaysPerWeek(($event?.target as HTMLInputElement).value)">
                     </div>
-                    <div class="flex flex-row place-items-center justify-center w-1/3">
+                    <div class="flex flex-col md:flex-row place-items-center justify-center w-1/3">
                         <label class="mr-4" for="dayNames">Day Naming</label>
                         <select class="bg-white dark:bg-black dark:border-white dark:outline-white" name="" id="dayNames"
                             v-model="calculatorStore.settings.dayNames">
@@ -64,7 +64,7 @@ const computedTotalOTHours = computed(() =>
                             </option>
                         </select>
                     </div>
-                    <div class="flex flex-row place-items-center justify-center w-1/3">
+                    <div class="flex flex-col md:flex-row place-items-center justify-center w-1/3">
                         <label class="mr-4" for="firstDay">First Day of Week</label>
                         <select class="w-28 bg-white dark:bg-black dark:border-white dark:outline-white" name=""
                             id="firstDay" v-model="calculatorStore.settings.firstDay">
@@ -74,21 +74,21 @@ const computedTotalOTHours = computed(() =>
                         </select>
                     </div>
                 </div>
-                <div class="flex flex-row justify-around place-items-center mt-4 h-8">
+                <div class="flex flex-row justify-around place-items-center mt-4">
                     <div class="flex flex-row w-2/3 ">
-                        <div class="flex flex-row w-1/3 justify-center place-items-center">
+                        <div class="flex flex-col md:flex-row w-1/3 justify-center place-items-center">
                             <label class="select-none mr-4" for="minHours">Minimum Daily Hours</label>
                             <input class="w-11 bg-white dark:bg-black dark:border-white dark:outline-white" type="number"
                                 id="minHours" :value="calculatorStore.settings.minHoursPerDay" max="24"
                                 @input="calculatorStore.settings.minHoursPerDay = Math.abs(parseFloat(($event?.target as HTMLInputElement)?.value) || 0)">
                         </div>
-                        <div class="flex flex-row w-1/3 place-items-center place-content-center">
+                        <div class="flex flex-col md:flex-row w-1/3 place-items-center place-content-center">
                             <label class="select-none mr-4" for="hasBreak">Breaks</label>
                             <input
                                 class="bg-white dark:bg-black dark:border-white dark:outline-white shadow-black dark:shadow-white"
                                 type="checkbox" id="hasBreak" v-model="calculatorStore.settings.hasBreak">
                         </div>
-                        <div class="flex flex-row w-1/3 place-items-center place-content-center">
+                        <div class="flex flex-col md:flex-row w-1/3 place-items-center place-content-center">
                             <label class="select-none mr-4" for="hasOT">OT</label>
                             <input
                                 class="bg-white dark:bg-black dark:border-white dark:outline-white shadow-black dark:shadow-white"
@@ -96,7 +96,7 @@ const computedTotalOTHours = computed(() =>
                         </div>
                     </div>
                     <div class="w-1/3">
-                        <div class="flex flex-row place-items-center " v-if="calculatorStore.settings.hasOT">
+                        <div class="flex flex-col md:flex-row place-items-center " v-if="calculatorStore.settings.hasOT">
                             <label class="select-none mr-4" for="hoursBeforeOT">Daily Hours before OT</label>
                             <input class="w-11  bg-white dark:bg-black dark:border-white dark:outline-white"
                                 id="hoursBeforeOT" type="number" :value="calculatorStore.settings.OTHours" max="24" min="1"
@@ -104,15 +104,15 @@ const computedTotalOTHours = computed(() =>
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-row  place-items-center mt-4 h-8">
-                    <div class="flex flex-row w-1/2 place-items-center place-content-center">
+                <div class="flex flex-row  place-items-center mt-4">
+                    <div class="flex flex-col md:flex-row w-1/2 place-items-center place-content-center">
                         <label class="select-none mr-4" for="h24">24 Hour Time</label>
                         <input
                             class="bg-white dark:bg-black dark:border-white dark:outline-white shadow-black dark:shadow-white"
                             type="checkbox" id="h24" v-model="calculatorStore.settings.h24">
                     </div>
 
-                    <div class="flex flex-row w-1/2 justify-center place-items-center">
+                    <div class="flex flex-col md:flex-row w-1/2 justify-center place-items-center">
                         <button
                             class="btn-primary"
                             @click="calculatorStore.settings.showHM = !calculatorStore.settings.showHM">

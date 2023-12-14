@@ -72,12 +72,12 @@ const clearCard = (cardI: number) => {
             <button tabindex="-1" class="absolute left-[-1px] top-[-1px] py-1 btn-primary"
                 @click="clearCard(props.cardI)">Clear</button>
             <div class="flex flex-row font-sans text-sm mt-2 py-2 font-semibold">
-                <div class="ml-[16.67%] w-3/6 flex flex-row">
+                <div class="ml-[16.67%] w-full md:w-3/6 flex flex-row">
                     <h3 :class="calculatorStore.settings.hasBreak ? 'w-2/5' : 'w-1/2'">In</h3>
                     <h3 :class="calculatorStore.settings.hasBreak ? 'w-2/5' : 'w-1/2'">Out</h3>
                     <h3 class="w-1/5" v-if="calculatorStore.settings.hasBreak">Break</h3>
                 </div>
-                <div class="w-1/3 flex flex-row">
+                <div class="hidden md:flex w-1/3 flex-row">
                     <h3 :class="calculatorStore.settings.hasOT ? 'w-1/2' : 'w-full'">
                         {{ calculatorStore.settings.hasOT ? 'Regular Hours' : 'Hours' }}
                     </h3>
@@ -90,7 +90,7 @@ const clearCard = (cardI: number) => {
                 <h3 class="w-1/6">
                     {{ daysOfWeek[calculatorStore.settings.dayNames][(dayI + calculatorStore.settings.firstDay) % 7] }}
                 </h3>
-                <div class="w-3/6 flex flex-row">
+                <div class="w-5/6 md:w-3/6 flex flex-row">
                     <div class="flex flex-row relative" :class="calculatorStore.settings.hasBreak ? 'w-2/5' : 'w-1/2'">
                         <input type="text" :class="!calculatorStore.settings.h24 ? 'pr-16' : '0'"
                             class="w-full py-1 outline-1 outline-black outline border-0 h-9  text-center dark:outline-white bg-white dark:bg-black"
@@ -115,14 +115,14 @@ const clearCard = (cardI: number) => {
                             {{ day.out.amPm }}
                         </button>
                     </div>
-                    <div class="w-1/5 flex flex-row relative" v-if="calculatorStore.settings.hasBreak">
+                    <div class="flex w-1/5 flex-row relative" v-if="calculatorStore.settings.hasBreak">
                         <input type="text" maxlength="3"
                             class="w-full py-1 outline-1 outline-black outline border-0 h-9 text-center dark:outline-white bg-white dark:bg-black"
                             :value="displayTimes[dayI].break" @focus="selectText"
                             @blur="updateTime(dayI, 'break', ($event?.target as HTMLInputElement)?.value)">
                     </div>
                 </div>
-                <div class="w-1/3 flex flex-row ">
+                <div class="w-1/3 hidden md:flex flex-row ">
                     <p :class="calculatorStore.settings.hasOT ? 'w-1/2 border-r-[1px]' : 'w-full'">
                         {{ calculatorStore.settings.showHM ?
                             decimalToHM(computedHours[dayI]?.withoutOT) :

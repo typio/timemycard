@@ -14,14 +14,14 @@ import TimeCardList from './components/TimeCardList.vue'
 
             <div class="my-4 h-1 border-b-[1px] border-black dark:border-white"></div>
 
-            <div class="flex flex-row font-serif place-content-around">
-                <div class="w-1/2">
+            <div class="flex flex-col-reverse md:flex-row font-serif place-content-around">
+                <div class="md:w-1/2">
                     <EvergreenSnippets />
                 </div>
 
 
-                <div class="w-1/2 max-w-lg">
-                    <div class="my-8 px-4">
+                <div class="md:w-1/2 max-w-lg">
+                    <div class="md:my-8 px-4">
                         <Testimonials />
                     </div>
 
@@ -33,13 +33,13 @@ import TimeCardList from './components/TimeCardList.vue'
         </div>
     </div>
 
-    <footer class=" text-sm mt-12 py-6  font-serif border-t-[1px] w-[100vw]">
-        <div class="max-w-5xl mx-auto flex flex-row place-items-end place-content-between">
+    <footer class=" text-sm mt-12 py-6 px-4  font-serif border-t-[1px] w-[100vw]">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row place-items-center md:place-items-end place-content-between">
             <p>Contact <a tabindex="-1"  href="mailto:me@tohuber.com" class="hover:underline underline-offset-2">me@tohuber.com</a> for
                 questions.</p>
 
-            <div class="flex flex-col place-items-end">
-                <a tabindex="-1"  class="mb-1 hover:underline underline-offset-2 " href="https://github.com/typio/time-my-card">Source
+            <div class="flex flex-col place-items-center md:place-items-end">
+                <a tabindex="-1"  class="my-4 md:mb-1 hover:underline underline-offset-2 " href="https://github.com/typio/time-my-card">Source
                     code</a>
                 <p>
                     © {{ Math.max(new Date().getFullYear(), 2023) }} by <a tabindex="-1"  href="https://tohuber.com"
