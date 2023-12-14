@@ -8,7 +8,7 @@ export default {
   theme: {
     fontFamily: {
       'sans': ['Inter', 'ui-sans-serif', 'system-ui'],
-      'serif': ['Times New Roman', 'Times', 'ui-serif', 'Georgia'],
+      'serif': ['Georgia', 'Times New Roman', 'Times', 'ui-serif', 'serif'],
     },
     extend: {},
   },

@@ -16,7 +16,7 @@ const toggleDarkMode = () => {
 </script>
 
 <template>
-    <button class="w-16 h-16" @click="toggleDarkMode">
+    <button class="w-16 h-16" @click="toggleDarkMode" aria-label="dark mode toggle">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" :class="{ 'dark-mode': isDarkMode }">
             <mask id="moon-mask">
                 <rect x="0" y="0" width="100" height="100" class="fill-white" />

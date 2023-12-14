@@ -14,6 +14,7 @@ export type TimeStamp = {
 export type TimeCardDay = {
     in: TimeStamp,
     out: TimeStamp,
+    break?: number
 }
 
 export type TimeCard = {
@@ -26,6 +27,7 @@ export type Settings = {
     showHM: boolean,
     h24: boolean,
     hasOT: boolean,
+    hasBreak: boolean,
     OTPeriod: 'day' | 'week' | 'both' | 'california',
     OTHours: number,
     minHoursPerDay: number,
@@ -61,6 +63,7 @@ const initialState: {
                 return {
                     in: { hours: undefined, minutes: undefined, amPm: AMPM.am },
                     out: { hours: undefined, minutes: undefined, amPm: AMPM.pm },
+                    break: undefined
                 }
             })
         }
@@ -72,6 +75,7 @@ const initialState: {
         showHM: false,
         h24: false,
         hasOT: true,
+        hasBreak: true,
         OTPeriod: 'day',
         OTHours: 8,
         minHoursPerDay: 0,
@@ -85,6 +89,7 @@ const addWeek = (store) => {
         days: Array.from({ length: store.timeCards?.at(-1)?.days?.length ?? 5 }, () => ({
             in: { hours: undefined, minutes: undefined, amPm: AMPM.am },
             out: { hours: undefined, minutes: undefined, amPm: AMPM.pm },
+            break: undefined
         })),
     });
 }
@@ -98,6 +103,7 @@ const clearFields = (store) => {
     store.timeCards.forEach(card => card.days.forEach(day => {
         day.in = { hours: undefined, minutes: undefined, amPm: AMPM.am };
         day.out = { hours: undefined, minutes: undefined, amPm: AMPM.pm };
+        day.break = undefined;
     }));
     store.name = ''
 }
@@ -111,6 +117,7 @@ const setDaysPerWeek = (store, dayAmount: number) => {
             card.days.push({
                 in: { hours: undefined, minutes: undefined, amPm: AMPM.am },
                 out: { hours: undefined, minutes: undefined, amPm: AMPM.pm },
+                break: undefined
             });
 
         // Make small

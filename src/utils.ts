@@ -54,7 +54,7 @@ export type TimeDuration = {
     minutes: number
 }
 
-export const calculateTime = (inTimeStamp: TimeStamp, outTimeStamp: TimeStamp, minHoursPerDay, OTHours?): { withoutOT: number, OT: number } | null => {
+export const calculateTime = (inTimeStamp: TimeStamp, outTimeStamp: TimeStamp, breakMinutes: number, minHoursPerDay, OTHours?): { withoutOT: number, OT: number } | null => {
     if (inTimeStamp.hours == undefined || inTimeStamp.minutes == undefined ||
         outTimeStamp.hours == undefined || outTimeStamp.minutes == undefined)
         return null
@@ -74,9 +74,10 @@ export const calculateTime = (inTimeStamp: TimeStamp, outTimeStamp: TimeStamp, m
 
     // Calculate total hours worked
     let totalHours = inDecimal <= outDecimal ? outDecimal - inDecimal : (24 - inDecimal) + outDecimal;
+    totalHours = Math.max(totalHours - (isNaN(breakMinutes) ? 0 : breakMinutes) / 60, 0)
 
     // Ensure total hours is at least the minimum per day, if specified
-    totalHours =  Math.max(minHoursPerDay, totalHours)
+    totalHours = Math.max(minHoursPerDay, totalHours)
 
     // Calculate overtime hours
     let withoutOT = OTHours ? Math.min(OTHours, totalHours) : totalHours
