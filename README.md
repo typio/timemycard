@@ -5,7 +5,7 @@ View [Time My Card](https://timemycard.com/) online!
 
 ## Future Features
 - Save values in local storage ✅ v2.0.0
-- Multiple pay periods per day (for breaks)
+- Break deduction ✅ v2.5.0
 - Pay calculation given payrate
 - OT calculation ✅ v1.1.1
 - 2/+ time cards in calculation ✅ v1.1.0
