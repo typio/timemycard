@@ -35,7 +35,7 @@ const name = ref('')
 const role = ref('')
 
 const post = async (message, name, role) => {
-    await await addDoc(collection(db, "mail"), {
+    await addDoc(collection(db, "mail"), {
         to: "me@tohuber.com",
         message: {
             subject: `Time My Card comment from ${name}`,
@@ -43,7 +43,7 @@ const post = async (message, name, role) => {
             html: `${message}<br />${name}, ${role}`,
         },
     })
-        .then(() => console.log("Queued email for delivery!"));
+    .then(() => mode.value = 'display')
 }
 </script>
 
@@ -80,7 +80,6 @@ const post = async (message, name, role) => {
 
             <button tabindex="1004" class="place-self-center btn-primary mt-2" @click="() => {
                 post(message, name, role)
-                console.log(message, name, role)
             }">Post</button>
         </div>
     </div>
