@@ -51,13 +51,13 @@ const computedTotalOTHours = computed(() =>
                 <div class="flex flex-row justify-around mt-4">
                     <div class="flex flex-col md:flex-row place-items-center justify-center w-1/3">
                         <label class="mr-4" for="daysPerWeek">Days per Week</label>
-                        <input class="w-11 bg-white dark:bg-black dark:border-white dark:outline-white" type="number"
+                        <input class="w-11 text-center bg-white dark:bg-black dark:border-white dark:outline-white" type="number"
                             id="daysPerWeek" min="1" max="7" :value="calculatorStore.timeCards[0]?.days.length"
                             @input="calculatorStore.setDaysPerWeek(($event?.target as HTMLInputElement).value)">
                     </div>
                     <div class="flex flex-col md:flex-row place-items-center justify-center w-1/3">
                         <label class="mr-4" for="dayNames">Day Naming</label>
-                        <select class="bg-white dark:bg-black dark:border-white dark:outline-white" name="" id="dayNames"
+                        <select class="w-24 text-center bg-white dark:bg-black dark:border-white dark:outline-white" name="" id="dayNames"
                             v-model="calculatorStore.settings.dayNames">
                             <option v-for="(days, daysI) in daysOfWeek" :value="daysI">
                                 {{ days.slice(0, 1).join(', ') }}
@@ -66,7 +66,7 @@ const computedTotalOTHours = computed(() =>
                     </div>
                     <div class="flex flex-col md:flex-row place-items-center justify-center w-1/3">
                         <label class="mr-4" for="firstDay">First Day of Week</label>
-                        <select class="w-28 bg-white dark:bg-black dark:border-white dark:outline-white" name=""
+                        <select class="w-24 text-center bg-white dark:bg-black dark:border-white dark:outline-white" name=""
                             id="firstDay" v-model="calculatorStore.settings.firstDay">
                             <option v-for="(day, dayI) in daysOfWeek[calculatorStore.settings.dayNames]" :value="dayI">
                                 {{ day }}
@@ -78,7 +78,7 @@ const computedTotalOTHours = computed(() =>
                     <div class="flex flex-row w-2/3 ">
                         <div class="flex flex-col md:flex-row w-1/3 justify-center place-items-center">
                             <label class="select-none mr-4" for="minHours">Minimum Daily Hours</label>
-                            <input class="w-11 bg-white dark:bg-black dark:border-white dark:outline-white" type="number"
+                            <input class="w-11 text-center bg-white dark:bg-black dark:border-white dark:outline-white" type="number"
                                 id="minHours" :value="calculatorStore.settings.minHoursPerDay" max="24"
                                 @input="calculatorStore.settings.minHoursPerDay = Math.abs(parseFloat(($event?.target as HTMLInputElement)?.value) || 0)">
                         </div>
@@ -98,7 +98,7 @@ const computedTotalOTHours = computed(() =>
                     <div class="w-1/3">
                         <div class="flex flex-col md:flex-row place-items-center " v-if="calculatorStore.settings.hasOT">
                             <label class="select-none mr-4" for="hoursBeforeOT">Daily Hours before OT</label>
-                            <input class="w-11  bg-white dark:bg-black dark:border-white dark:outline-white"
+                            <input class="text-center w-11 bg-white dark:bg-black dark:border-white dark:outline-white"
                                 id="hoursBeforeOT" type="number" :value="calculatorStore.settings.OTHours" max="24" min="1"
                                 @input="calculatorStore.settings.OTHours = Math.abs(parseFloat(($event?.target as HTMLInputElement)?.value) || 1)">
                         </div>
