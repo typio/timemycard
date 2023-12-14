@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import EvergreenSnippets from './components/EvergreenSnippets.vue';
 import Header from './components/Header.vue';
-// import Testimonials from './components/Testimonials.vue';
+import Testimonials from './components/Testimonials.vue';
 import TimeCardList from './components/TimeCardList.vue'
 </script>
 
@@ -14,16 +14,16 @@ import TimeCardList from './components/TimeCardList.vue'
 
             <div class="my-4 h-1 border-b-[1px] border-black dark:border-white"></div>
 
-            <div class="flex flex-row font-serif place-content-between">
+            <div class="flex flex-row font-serif place-content-around">
                 <div class="w-1/2">
                     <EvergreenSnippets />
                 </div>
 
 
                 <div class="w-1/2 max-w-lg">
-                    <!-- <div class="my-8 px-4">
+                    <div class="my-8 px-4">
                         <Testimonials />
-                    </div> -->
+                    </div>
 
                     <!-- TimeCard Right -->
                     <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9012705634493266"
@@ -35,14 +35,14 @@ import TimeCardList from './components/TimeCardList.vue'
 
     <footer class=" text-sm mt-12 py-6  font-serif border-t-[1px] w-[100vw]">
         <div class="max-w-5xl mx-auto flex flex-row place-items-end place-content-between">
-            <p>Contact <a href="mailto:me@tohuber.com" class="hover:underline underline-offset-2">me@tohuber.com</a> for
+            <p>Contact <a tabindex="-1"  href="mailto:me@tohuber.com" class="hover:underline underline-offset-2">me@tohuber.com</a> for
                 questions.</p>
 
             <div class="flex flex-col place-items-end">
-                <a class="mb-1 hover:underline underline-offset-2 " href="https://github.com/typio/time-my-card">Source
+                <a tabindex="-1"  class="mb-1 hover:underline underline-offset-2 " href="https://github.com/typio/time-my-card">Source
                     code</a>
                 <p>
-                    © {{ Math.max(new Date().getFullYear(), 2023) }} by <a href="https://tohuber.com"
+                    © {{ Math.max(new Date().getFullYear(), 2023) }} by <a tabindex="-1"  href="https://tohuber.com"
                         class="hover:underline underline-offset-2">Thomas Huber</a>
                 </p>
             </div>

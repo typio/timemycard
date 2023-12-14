@@ -69,8 +69,7 @@ const clearCard = (cardI: number) => {
 <template>
     <div v-if="!props.print">
         <div class=" w-full text-center text-sm border-[1px] whitespace-nowrap relative">
-            <button
-                class="absolute left-[-1px] top-[-1px] py-1 px-2 border-[1px] border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black "
+            <button tabindex="-1" class="absolute left-[-1px] top-[-1px] py-1 btn-primary"
                 @click="clearCard(props.cardI)">Clear</button>
             <div class="flex flex-row font-sans text-sm mt-2 py-2 font-semibold">
                 <div class="ml-[16.67%] w-3/6 flex flex-row">
@@ -93,8 +92,7 @@ const clearCard = (cardI: number) => {
                 </h3>
                 <div class="w-3/6 flex flex-row">
                     <div class="flex flex-row relative" :class="calculatorStore.settings.hasBreak ? 'w-2/5' : 'w-1/2'">
-                        <input type="text"
-                        :class="!calculatorStore.settings.h24 ? 'pr-16' : '0'"
+                        <input type="text" :class="!calculatorStore.settings.h24 ? 'pr-16' : '0'"
                             class="w-full py-1 outline-1 outline-black outline border-0 h-9  text-center dark:outline-white bg-white dark:bg-black"
                             :value="displayTimes[dayI].in" @focus="selectText"
                             @blur="updateTime(dayI, 'in', ($event?.target as HTMLInputElement)?.value)">
@@ -106,8 +104,7 @@ const clearCard = (cardI: number) => {
                         </button>
                     </div>
                     <div class=" flex flex-row relative" :class="calculatorStore.settings.hasBreak ? 'w-2/5' : 'w-1/2'">
-                        <input type="text"
-                        :class="!calculatorStore.settings.h24 ? 'pr-16' : '0'"
+                        <input type="text" :class="!calculatorStore.settings.h24 ? 'pr-16' : '0'"
                             class="w-full py-1 outline-1 outline-black outline border-0 h-9  text-center dark:outline-white bg-white dark:bg-black"
                             :value="displayTimes[dayI].out" @focus="selectText"
                             @blur="updateTime(dayI, 'out', ($event?.target as HTMLInputElement)?.value)">

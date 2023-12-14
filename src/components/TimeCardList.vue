@@ -25,24 +25,24 @@ const computedTotalOTHours = computed(() =>
             <div class="">
                 <div class="flex flex-row justify-between ">
                     <button
-                        class="py-2 px-4 border-[1px] border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black "
+                        class="btn-primary"
                         @click="calculatorStore.clearFields()">
                         Clear Fields
                     </button>
                     <div class="flex flex-row gap-6">
                         <button
-                            class="w-36 py-2 px-4 border-[1px] border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black "
+                            class="w-36 btn-primary"
                             @click="calculatorStore.addWeek()">
                             Add Week
                         </button>
                         <button
-                            class="w-36 py-2 px-4 border-[1px] border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black "
+                            class="w-36 btn-primary"
                             @click="calculatorStore.removeWeek()">
                             Remove Week
                         </button>
                     </div>
                     <button
-                        class="py-2 px-4 border-[1px] border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black "
+                        class="btn-primary"
                         @click="printPage">
                         Print
                     </button>
@@ -114,7 +114,7 @@ const computedTotalOTHours = computed(() =>
 
                     <div class="flex flex-row w-1/2 justify-center place-items-center">
                         <button
-                            class="py-2 px-4 w-52 border-[1px] border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black "
+                            class="btn-primary"
                             @click="calculatorStore.settings.showHM = !calculatorStore.settings.showHM">
                             {{ calculatorStore.settings.showHM ? "Decimal Time Format" : "hh:mm Time Format" }}
                         </button>
