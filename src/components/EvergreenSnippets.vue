@@ -15,26 +15,29 @@ const snippets = [
         title: `How Does a Time Card Calculator Work?`,
         body: `A Time Card Calculator simply adds the difference between the employee's in and out times of each day.
         Our Time Card Calculator stands out with its intelligent time recognition and instant calculation features.
-         It simplifies time entry by interpreting unformatted times–for instance, '9' is read as '9:00', 
-         and '232' as '2:32'. The calculator effortlessly handles both 12-hour and 24-hour formats, automatically 
-         adjusting inputs like '1432' in 12h to '2:32'. This flexibility makes it perfect for diverse work environments. 
-         Switch between 12h and 24h views anytime, with in/out times instantly converted, ensuring a smooth and error-free 
-         payroll calculation experience for all types of users.`
+        It simplifies time entry by interpreting unformatted times–for instance, '9' is read as '9:00', 
+        and '232' as '2:32'. The calculator effortlessly handles both 12-hour and 24-hour formats, automatically 
+        adjusting inputs like '1432' in 12h to '2:32'. This flexibility makes it perfect for diverse work environments. 
+        Switch between 12h and 24h views anytime, with in/out times instantly converted, ensuring a smooth and error-free 
+        payroll calculation experience for all types of users.
+        `
     },
     {
         title: `Benefits of Using an Online Time Card Calculator`,
         body: `An Online Time Card Calculator is a game-changer in payroll management. It guarantees accurate time tracking 
         and simplifies wage calculations, especially beneficial for businesses juggling multiple employee schedules. 
         This tool reduces manual errors, enhances productivity by automating tedious calculations, and ensures compliance
-         with labor laws for overtime and breaks. Its accessibility and user-friendliness make it an indispensable resource
-          for any business looking to streamline their payroll processes.`
+        with labor laws for overtime and breaks. Its accessibility and user-friendliness make it an indispensable resource
+        for any business looking to streamline their payroll processes.
+        `
     },
     {
         title: `Who Can Benefit from a Time Card Calculator?`,
-        body: ` Small business owners can manage payroll more efficiently, freelancers can track project hours accurately, 
+        body: `Small business owners can manage payroll more efficiently, freelancers can track project hours accurately, 
         HR departments can streamline employee timekeeping, and employees can ensure their work hours are correctly recorded. 
         This tool is a valuable asset for anyone needing a reliable and straightforward method to calculate work hours and manage 
-        payroll effectively. Time Card Calculators are versatile tools benefiting a wide range of users. `
+        payroll effectively. Time Card Calculators are versatile tools benefiting a wide range of users.
+        `
     },
     {
         title: `Features of Our Time Card Calculator`,
@@ -42,7 +45,8 @@ const snippets = [
         customizable formatting, and a variety of calculation settings to suit different business needs. Whether you're 
         calculating regular hours, overtime, or adjusting for breaks, our tool offers flexibility and precision. Additionally, 
         its intuitive interface makes it simple for users of all skill levels to navigate and utilize effectively for their payroll 
-        needs.`
+        needs.
+        `
     },
     {
         title: `Guides and Best Practices`,
@@ -79,13 +83,11 @@ const snippets = [
         </br>A: Yes, the calculator offers easy printing options for your convenience and record-keeping purposes.
 
         </br></br><b>Q: Is there a feature for tracking break times?</b>
-        </br>A: Yes, the calculator allows you to input break times, which are then subtracted from the total work hours for accurate calculations.`
+        </br>A: Yes, the calculator allows you to input break times, which are then subtracted from the total work hours for accurate calculations.
+        `
     }
 ]
-
-
 </script>
-
 
 <template>
     <div v-for="(snippet, i) in snippets">

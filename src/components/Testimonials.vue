@@ -61,20 +61,20 @@ const post = async (message, name, role) => {
             </Transition>
             <button tabindex="-1" class="place-self-center btn-primary" @click="mode = 'post'">Add Your Comment</button>
         </div>
-        <div v-else class="flex flex-col pt-9 gap-2">
+        <div v-else class="flex flex-col pt-9 gap-2 font-sans text-sm ">
             <button tabindex="1000" href=""
                 class="h-10 w-10 p-0 place-self-center btn-primary absolute top-[-1px] left-[-1px]"
                 @click="mode = 'display'">×</button>
 
             <textarea tabindex="1001" type="text" placeholder="Comment" rows="2"
-                class="pl-1 bg-white dark:bg-black dark:border-white dark:outline-white" v-model="message">
+                class="p-2 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 bg-white dark:bg-black dark:border-white dark:outline-white" v-model="message">
                 </textarea>
             <div class="flex flex-row gap-2 ">
                 <input tabindex="1002" type="text" placeholder="Name"
-                    class=" w-full pl-1 text-center bg-white dark:bg-black dark:border-white dark:outline-white"
+                    class="p-1 w-full pl-1 text-center  placeholder:text-zinc-400 dark:placeholder:text-zinc-600 bg-white dark:bg-black dark:border-white dark:outline-white"
                     v-model="name">
                 <input tabindex="1003" type="text" placeholder="Role"
-                    class=" w-full pl-1 text-center  bg-white dark:bg-black dark:border-white dark:outline-white"
+                    class="p-1 w-full pl-1 text-center  placeholder:text-zinc-400 dark:placeholder:text-zinc-600 bg-white dark:bg-black dark:border-white dark:outline-white"
                     v-model="role">
             </div>
 

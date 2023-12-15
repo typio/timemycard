@@ -93,9 +93,10 @@ const clearCard = (cardI: number) => {
                 <div class="w-5/6 md:w-3/6 flex flex-row">
                     <div class="flex flex-row relative" :class="calculatorStore.settings.hasBreak ? 'w-2/5' : 'w-1/2'">
                         <input type="text" :class="!calculatorStore.settings.h24 ? 'pr-16' : '0'"
-                            class="w-full py-1 outline-1 outline-black outline border-0 h-9  text-center dark:outline-white bg-white dark:bg-black"
+                            class="w-full py-1 outline-1 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 outline-black outline border-0 h-9  text-center dark:outline-white bg-white dark:bg-black"
                             :value="displayTimes[dayI].in" @focus="selectText"
-                            @blur="updateTime(dayI, 'in', ($event?.target as HTMLInputElement)?.value)">
+                            @blur="updateTime(dayI, 'in', ($event?.target as HTMLInputElement)?.value)"
+                            :placeholder="dayI == 0 && cardI == 0 ? '9:00' : ''">
 
                         <button tabindex="-1"
                             class="w-16 absolute right-0 h-9 border-l-[1px] z-[999] border-black dark:border-white bg-transparent"
@@ -105,9 +106,9 @@ const clearCard = (cardI: number) => {
                     </div>
                     <div class=" flex flex-row relative" :class="calculatorStore.settings.hasBreak ? 'w-2/5' : 'w-1/2'">
                         <input type="text" :class="!calculatorStore.settings.h24 ? 'pr-16' : '0'"
-                            class="w-full py-1 outline-1 outline-black outline border-0 h-9  text-center dark:outline-white bg-white dark:bg-black"
+                            class="w-full py-1 outline-1 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 outline-black outline border-0 h-9  text-center dark:outline-white bg-white dark:bg-black"
                             :value="displayTimes[dayI].out" @focus="selectText"
-                            @blur="updateTime(dayI, 'out', ($event?.target as HTMLInputElement)?.value)">
+                            @blur="updateTime(dayI, 'out', ($event?.target as HTMLInputElement)?.value)" :placeholder="dayI == 0 && cardI == 0 ? '5:00' : ''">
 
                         <button
                             class="w-16 absolute right-0 h-9 border-l-[1px] z-[999] border-black dark:border-white bg-transparent"
@@ -117,9 +118,10 @@ const clearCard = (cardI: number) => {
                     </div>
                     <div class="flex w-1/5 flex-row relative" v-if="calculatorStore.settings.hasBreak">
                         <input type="text" maxlength="3"
-                            class="w-full py-1 outline-1 outline-black outline border-0 h-9 text-center dark:outline-white bg-white dark:bg-black"
+                            class="w-full py-1 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 outline-1 outline-black outline border-0 h-9 text-center dark:outline-white bg-white dark:bg-black"
                             :value="displayTimes[dayI].break" @focus="selectText"
-                            @blur="updateTime(dayI, 'break', ($event?.target as HTMLInputElement)?.value)">
+                            @blur="updateTime(dayI, 'break', ($event?.target as HTMLInputElement)?.value)"
+                            :placeholder="dayI == 0 && cardI == 0 ? '30min' : ''">
                     </div>
                 </div>
                 <div class="w-1/3 hidden md:flex flex-row ">
@@ -137,7 +139,7 @@ const clearCard = (cardI: number) => {
                 </div>
             </div>
 
-            <div class="my-4 max-w-lg mx-auto flex flex-row  place-content-evenly text-base">
+            <div class="my-4 max-w-lg mx-auto flex flex-row  place-content-evenly text-sm">
                 <div class="flex flex-row place-items-center">
                     <p class="mr-4 font-sans ">Total</p>
 

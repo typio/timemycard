@@ -104,7 +104,7 @@ const computedTotalOTHours = computed(() =>
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-row  place-items-center mt-4">
+                <div class="flex flex-row  place-items-center mt-4 ">
                     <div class="flex flex-col md:flex-row w-1/2 place-items-center place-content-center">
                         <label class="select-none mr-4" for="h24">24 Hour Time</label>
                         <input
@@ -162,7 +162,7 @@ const computedTotalOTHours = computed(() =>
             </div>
         </div>
 
-        <div class="mt-4 border-[1px] totals-sum">
+        <div class="mt-4 border-[1px] totals-sum text-sm">
             <div class="my-4 max-w-lg mx-auto flex flex-row  place-content-evenly ">
                 <div class="flex flex-row place-items-center">
                     <p class="mr-4 ">Total</p>
