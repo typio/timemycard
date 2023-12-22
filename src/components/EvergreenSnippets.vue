@@ -91,7 +91,7 @@ const snippets = [
 
 <template>
     <div v-for="(snippet, i) in snippets">
-        <h2 class="text-left mt-6 text-xl font-semibold text-zinc-900 dark:text-zinc-100">{{ snippet.title }}</h2>
+        <h3 class="text-left mt-6 text-xl font-semibold text-zinc-900 dark:text-zinc-100">{{ snippet.title }}</h3>
         <p class="text-left mt-2 text-base font-medium  text-zinc-700 dark:text-zinc-300 first-letter:text-[28px] first-letter:leading-[24px]  first-letter:text-zinc-900 dark:first-letter:text-zinc-100
   first-letter:mr-1 first-letter:float-left" v-html="snippet.body">
         </p>

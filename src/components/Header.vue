@@ -10,6 +10,7 @@ import DarkModeToggle from "./DarkModeToggle.vue"
             <DarkModeToggle />
             <a tabindex="-1"  class="w-32 md:w-56 mb-2 md:mt-6" href="https://timemycard.com" aria-label="time my card logo">
                 <TextLogo />
+                <h1 class="hidden">Time My Card</h1>
             </a>
             <div class="w-16"></div>
         </div>
