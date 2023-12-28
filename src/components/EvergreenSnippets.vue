@@ -61,7 +61,7 @@ const snippets = [
     },
     {
         title: `Frequently Asked Questions (FAQ)`,
-        body: `Here is a replete list of answers to the questions you might have. If this doesn't answer your question, shoot us an email!
+        body: `Here is a replete list of answers to the questions you might have.
         </br></br><b>Q: How do I input time data into the calculator?</b>
         </br>A: Enter the start and end times for each work period, including any break times. The calculator will automatically compute the total hours.
 
