@@ -37,10 +37,10 @@ export const interpretTimeInput = (input: string, _amPm: AMPM, h24 = false): Tim
 
 
     if (h24)
-        if (hours <= 12) amPm = AMPM.am
+        if (hours < 12) amPm = AMPM.am
         else amPm = AMPM.pm
 
-    if (hours > 12) {
+    if (hours >= 12) {
         hours -= 12
         amPm = AMPM.pm
     }
