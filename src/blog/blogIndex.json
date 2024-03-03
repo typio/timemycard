@@ -1,0 +1,22 @@
+{
+  "posts": [
+    {
+      "id": "how-much-should-i-pay-my-employees",
+      "title": "How much should I pay my employees?",
+      "description": "Your definitive guide to employee compensation, and its many considerations.",
+      "img_path": "give-money-small.webp",
+      "img_alt": "Employeer graciously giving to worker",
+      "date": "2024-03-02T12:00:00.111Z",
+      "preview": false
+    },
+    {
+      "id": "how-should-i-price-my-products",
+      "title": "How should I price my products?",
+      "description": "Product pricing can make or break your business, let's get it right.",
+      "img_path": "make-money-small.webp",
+      "img_alt": "Employeer enjoying new wealth",
+      "date": "2024-03-1T12:00:00.000Z",
+      "preview": true
+    }
+  ]
+}

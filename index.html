@@ -1,50 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
-    <meta name="description"
-        content="Efficiently calculate work hours with our user-friendly Time Card Calculator. Try it now for free!">
-    <meta name="keywords"
-        content="time card calculator, work hours calculator, payroll calculator, track work hours, calculate overtime, online time calculator, employee time tracking">
-    <meta property="og:title" content="Time Card Calculator – Track Work Hours">
-    <meta property="og:description"
-        content="User-friendly calculator for tracking work hours and payroll. Ideal for small businesses and HR professionals.">
-    <meta property="og:image" content="https://timemycard.com/text_logo.svg">
-    <meta property="og:url" content="https://www.timemycard.com">
+    <meta
+      name="description"
+      content="Efficiently calculate work hours with our user-friendly Time Card Calculator. Try it now for free!"
+    />
+    <meta
+      name="keywords"
+      content="time card calculator, work hours calculator, payroll calculator, track work hours, calculate overtime, online time calculator, employee time tracking"
+    />
+    <meta
+      property="og:title"
+      content="Time Card Calculator – Track Work Hours"
+    />
+    <meta
+      property="og:description"
+      content="User-friendly calculator for tracking work hours and payroll. Ideal for small businesses and HR professionals."
+    />
+    <meta property="og:image" content="https://timemycard.com/text_logo.svg" />
+    <meta property="og:url" content="https://www.timemycard.com" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Time Card Calculator – Calculate Work Hours For Free</title>
-    <link rel="shortcut icon" href="logo.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="logo.svg" type="image/x-icon" />
 
     <script type="text/javascript">
-        // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark')
-        } else {
-            document.documentElement.classList.remove('dark')
-        }
+      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark")
+      } else {
+        document.documentElement.classList.remove("dark")
+      }
     </script>
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QK157R10NJ"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-QK157R10NJ"
+    ></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag("js", new Date())
 
-        gtag('config', 'G-QK157R10NJ');
+      gtag("config", "G-QK157R10NJ")
     </script>
-</head>
+  </head>
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9012705634493266"
-    crossorigin="anonymous"></script>
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+  <!-- <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9012705634493266"
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    ;(adsbygoogle = window.adsbygoogle || []).push({})
+  </script> -->
 
-<body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-</body>
-
+  <div id="app">
+    <router-view></router-view>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
 </html>
