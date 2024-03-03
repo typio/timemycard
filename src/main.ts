@@ -1,3 +1,4 @@
+// @ts-ignore
 import { createApp } from "vue/dist/vue.esm-bundler"
 import { createHead } from "@unhead/vue"
 import { createRouter, createWebHistory } from "vue-router"
@@ -11,7 +12,7 @@ import Articles from "./routes/Articles.vue"
 const app = createApp(App)
 
 const router = createRouter({
-  scrollBehavior(to, from, savedPosition) {
+  scrollBehavior() {
     // always scroll to top
     return { top: 0 }
   },

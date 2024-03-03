@@ -55,7 +55,7 @@ const send = async (message, contact) => {
           <img
             class="rounded-full w-56 h-56 object-cover mx-8"
             style=""
-            src="thomas-huber.webp"
+            src="/thomas-huber.webp"
             alt=""
           />
         </div>

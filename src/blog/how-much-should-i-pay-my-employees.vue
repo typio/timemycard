@@ -7,7 +7,7 @@ const progressBar = ref(null)
 onMounted(() => {
   progressBar.value.style.width = `0px`
 
-  window.addEventListener("scroll", (event) => {
+  window.addEventListener("scroll", () => {
     console.log(
       window.scrollY,
       document.documentElement.scrollHeight - window.innerHeight,
