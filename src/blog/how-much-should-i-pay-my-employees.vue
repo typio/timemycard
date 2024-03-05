@@ -175,7 +175,7 @@ useHead({
                 Overtime Pay and Rules
               </h2>
               <p class="indent-4">
-                Typically as definied in the FLSA, hours worked after 40 in a
+                Typically as defined in the FLSA, hours worked after 40 in a
                 workweek are classified overtime, and these hours must be paid
                 at time and a half or 1.5 times the normal rate. Some states
                 have additional laws regarding overtime such as California.
@@ -352,15 +352,15 @@ useHead({
               <h2 class="mt-4 mb-2 font-semibold">Insurance</h2>
               <p class="indent-4">
                 Offering insurance instead of a higher wage is cost effective
-                since you the benefits are often tax-deductible, and the economy
-                of scale will allow you to obtain a group rate cheaper than the
+                since the benefits are often tax-deductible, and the economy of
+                scale will allow you to obtain a group rate cheaper than the
                 employee would be able to find on their own. Insurance will
                 increase your employee's satisfaction and peace of mind, making
                 them more likely to stay with you. Health insurance is the most
                 common but consider a comprehensive package with dental and
-                vision. Employees with dependants will especially value if you
-                offer life insurance. All-in-all insurance benefits will make
-                your company more competitive on the job market.
+                vision. Employees with dependants will especially value it if
+                you offer life insurance. All-in-all insurance benefits will
+                make your company more competitive on the job market.
               </p>
             </li>
           </ul>
@@ -384,13 +384,13 @@ useHead({
             and retraining. Conversely, don't offer an unsustainably high rate
             of pay in the rush to secure a candidate, if you won't be able to
             afford it later on. It is much easier to give a raise later on than
-            a paycut.
+            a pay cut.
           </p>
           <p class="indent-4 mt-2">
             Be prepared to be flexible. Start by explaining your offer,
             including the benefits and opportunities for growth. Explain how
             these benefits align with your candidates needs and aspirations.
-            Next listen to their priorities and try to adjust your compensation
+            Next, listen to their priorities and try to adjust your compensation
             package to their needs, this can make the negotiation a mutually
             beneficial agreement instead of a zero-sum game.
           </p>
@@ -404,7 +404,7 @@ useHead({
             Consider offering performance based bonuses for tasks such as making
             a sale or completing a project. Be clear in their reason, they
             should have objective criteria to inspire motivation and avoid
-            feelings of favoritism. Sign-on bonuses can be useful for attacting
+            feelings of favoritism. Sign-on bonuses can be useful for attracting
             exceptionally qualified candidates. A retention bonus might be
             offered if work conditions become unexpectedly difficult. Holiday or
             profit-sharing bonuses are a great way to share company success,

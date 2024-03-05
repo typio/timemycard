@@ -44,7 +44,7 @@ const send = async (message, contact) => {
     </p>
     <p class="text-left indent-8 mt-2">
       Our website may lack color but our blood runs green! We are proud to be
-      low-carbon and near-zero-waste. To-date we are elated to have splilled
+      low-carbon and near-zero-waste. To-date we are elated to have spilled
       fewer than several tons of unrefined crude oil into natural ecosystems.
     </p>
 
@@ -95,7 +95,7 @@ const send = async (message, contact) => {
       revolutionizing the global economy through an unseen coup of wealth.
       Would-be angel investors in this new Mali-esque kingdom of gold should
       fill out the contact form below and they shall be gifted a secured
-      existance in the future world-order.
+      existence in the future world-order.
     </p>
     <p class="text-left indent-8 mt-4">Please send us a message!</p>
     <div class="mt-4 font-serif text-base">
