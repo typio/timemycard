@@ -38,31 +38,24 @@ const send = async (message, contact) => {
       American dream, for although most dreams occur in the dark; so does most
       stumbling, stubbing, and slipping, and we do not want your S Corp to sink.
     </p>
-    <p class="text-left indent-8 mt-2">
-      Our company is maximumly diverse, featuring no more than one individual
-      from any race, gender identity, or sexual orientation.
-    </p>
-    <p class="text-left indent-8 mt-2">
-      Our website may lack color but our blood runs green! We are proud to be
-      low-carbon and near-zero-waste. To-date we are elated to have spilled
-      fewer than several tons of unrefined crude oil into natural ecosystems.
-    </p>
+    <!-- <p class="text-left indent-8 mt-2"> -->
+    <!--   Our company is maximumly diverse, featuring no more than one individual -->
+    <!--   from any race, gender identity, or sexual orientation. -->
+    <!-- </p> -->
+    <!-- <p class="text-left indent-8 mt-2"> -->
+    <!--   Our website may lack color but our blood runs green! We are proud to be -->
+    <!--   low-carbon and near-zero-waste. To-date we are elated to have spilled -->
+    <!--   fewer than several tons of unrefined crude oil into natural ecosystems. -->
+    <!-- </p> -->
 
     <h1 id="meet-us" class="text-left font-bold italic mb-2 mt-8">Meet Us</h1>
     <div class="flex flex-row">
       <div class="inline-block mt-[70px]">
         <div style="shape-outside: circle(50%)" class="float-right">
-          <img
-            class="rounded-full w-56 h-56 object-cover mx-8"
-            style=""
-            src="/thomas-huber.webp"
-            alt=""
-          />
+          <img class="rounded-full w-56 h-56 object-cover mx-8" style="" src="/thomas-huber.webp" alt="" />
         </div>
         <p class="leading-7 text-left mt-[-70px] indent-8">
-          <span class="font-semibold underline underline-offset-4"
-            >Thomas Huber</span
-          >
+          <span class="font-semibold underline underline-offset-4">Thomas Huber</span>
           earned a Bachelor's degree in Computer Science from Arizona State
           University and has worked as the payroll manager of a small business
           for the past 5 years. He is a remarkable individual, known for his
@@ -100,33 +93,19 @@ const send = async (message, contact) => {
     <p class="text-left indent-8 mt-4">Please send us a message!</p>
     <div class="mt-4 font-serif text-base">
       <div v-if="mode == 'form'" class="flex flex-col">
-        <textarea
-          tabindex="1001"
-          type="text"
-          placeholder="Message"
-          rows="2"
+        <textarea tabindex="1001" type="text" placeholder="Message" rows="2"
           class="p-2 placeholder:text-zinc-400 resize-none h-48 text-base dark:placeholder:text-zinc-600 bg-white dark:bg-black dark:border-white dark:outline-white"
-          v-model="message"
-        >
+          v-model="message">
         </textarea>
 
-        <input
-          tabindex="1002"
-          type="text"
-          placeholder="Contact Information"
+        <input tabindex="1002" type="text" placeholder="Contact Information"
           class="p-2 w-full text-base mt-2 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 bg-white dark:bg-black dark:border-white dark:outline-white"
-          v-model="contact"
-        />
+          v-model="contact" />
 
-        <button
-          tabindex="1004"
-          class="place-self-end btn-primary mt-2"
-          @click="
-            () => {
-              send(message, contact)
-            }
-          "
-        >
+        <button tabindex="1004" class="place-self-end btn-primary mt-2" @click="() => {
+          send(message, contact)
+        }
+        ">
           Send Message
         </button>
       </div>
