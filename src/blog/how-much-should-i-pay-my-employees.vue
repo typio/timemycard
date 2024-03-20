@@ -12,12 +12,11 @@ onMounted(() => {
       window.scrollY,
       document.documentElement.scrollHeight - window.innerHeight,
     )
-    progressBar.value.style.width = `${
-      (window.scrollY /
-        (document.documentElement.scrollHeight - window.innerHeight)) *
+    progressBar.value.style.width = `${(window.scrollY /
+      (document.documentElement.scrollHeight - window.innerHeight)) *
       window.innerWidth *
       0.94
-    }px`
+      }px`
   })
 })
 
@@ -37,9 +36,7 @@ useHead({
   <div ref="progressBar" class="sticky top-0 h-1 bg-black" />
 
   <div class="mt-8">
-    <div
-      class="flex sticky h-0 top-8 justify-end text-right text-xs font-medium"
-    >
+    <div class="flex sticky h-0 top-8 justify-end text-right text-xs font-medium">
       <ul class="hidden lg:flex max-w-[156px] gap-4 flex flex-col">
         <li>
           <a href="#regulation " class="hover:underline">
@@ -80,9 +77,7 @@ useHead({
       </ul>
     </div>
 
-    <div
-      class="flex flex-col max-w-xl mx-auto font-serif text-left text-lg lg:text-xl"
-    >
+    <div class="flex flex-col max-w-xl mx-auto font-serif text-left text-lg lg:text-xl">
       <div class="flex flex-col border-b-[1px] pb-4">
         <h1 class="italic font-semibold text-3xl lg:text-4xl">
           How much should I pay my employees?
@@ -98,13 +93,10 @@ useHead({
           <img src="/give-money.webp" alt="" />
           <p class="text-zinc-600 dark:text-zinc-400 italic text-sm mt-1">
             Man receiving money. Photograph by
-            <a
-              target="_blank"
-              href="https://www.pexels.com/@timur-weber/"
-              class="not-italic text-blue-800 dark:text-blue-400 underline"
-            >
-              Timur Weber</a
-            >.
+            <a target="_blank" href="https://www.pexels.com/@karolina-grabowska/"
+              class="not-italic text-blue-800 dark:text-blue-400 underline">
+              Karolina Grabowska
+            </a>.
           </p>
         </div>
 
@@ -120,8 +112,7 @@ useHead({
             Minimum Wages & Regulations
           </h2>
           <div
-            class="text-center mt-4 p-4 bg-green-200 dark:bg-green-700 border-2 border-green-300 dark:border-green-800 rounded-xl"
-          >
+            class="text-center mt-4 p-4 bg-green-200 dark:bg-green-700 border-2 border-green-300 dark:border-green-800 rounded-xl">
             <p class="">
               Before making the tough decisions, first understand the minimums
               required of you legally.
@@ -138,13 +129,9 @@ useHead({
                 from being guaranteed the federal minimum wage and overtime.
                 These employees instead are paid a fixed yearly salary. Review
                 the Department of Labor's (DOL)
-                <a
-                  target="_blank"
-                  href="https://www.dol.gov/agencies/whd/fact-sheets/17a-overtime"
-                  class="text-blue-800 dark:text-blue-400 underline"
-                >
-                  fact sheets</a
-                >
+                <a target="_blank" href="https://www.dol.gov/agencies/whd/fact-sheets/17a-overtime"
+                  class="text-blue-800 dark:text-blue-400 underline">
+                  fact sheets</a>
                 to determine if your employee is exempt.
               </p>
               <p class="mt-2 indent-4">
@@ -162,12 +149,8 @@ useHead({
               <p class="indent-4">
                 Federal minimum wage is <b>$7.25</b> an hour, though many states
                 have enacted higher minimum wages. The DOL provides a
-                <a
-                  target="_blank"
-                  href="https://www.dol.gov/agencies/whd/minimum-wage/state"
-                  class="text-blue-800 dark:text-blue-400 underline"
-                  >map of the minimum wage in every state</a
-                >.
+                <a target="_blank" href="https://www.dol.gov/agencies/whd/minimum-wage/state"
+                  class="text-blue-800 dark:text-blue-400 underline">map of the minimum wage in every state</a>.
               </p>
             </li>
             <li>
@@ -200,12 +183,8 @@ useHead({
               <p class="indent-4">
                 It is most common to pay hourly employees once every other week.
                 But most states have specific pay frequency laws, so review
-                <a
-                  target="_blank"
-                  href="https://www.dol.gov/agencies/whd/state/payday"
-                  class="text-blue-800 dark:text-blue-400 underline"
-                  >this DOL table</a
-                >
+                <a target="_blank" href="https://www.dol.gov/agencies/whd/state/payday"
+                  class="text-blue-800 dark:text-blue-400 underline">this DOL table</a>
                 to find out which payment schemes are available in your state.
               </p>
             </li>
@@ -217,17 +196,12 @@ useHead({
             How to Find Competitive Salaries
           </h2>
           <div
-            class="text-center mt-4 p-4 bg-green-200 dark:bg-green-700 border-2 border-green-300 dark:border-green-800 rounded-xl"
-          >
+            class="text-center mt-4 p-4 bg-green-200 dark:bg-green-700 border-2 border-green-300 dark:border-green-800 rounded-xl">
             <p class="">
               Understanding what your employee expects to be paid is crucial,
               luckily
-              <a
-                target="_blank"
-                href="https://www.bls.gov/bls/blswage.htm"
-                class="text-blue-800 dark:text-blue-400 underline"
-                >this information</a
-              >
+              <a target="_blank" href="https://www.bls.gov/bls/blswage.htm"
+                class="text-blue-800 dark:text-blue-400 underline">this information</a>
               is publically available.
             </p>
           </div>
@@ -237,12 +211,9 @@ useHead({
             appropriate. To get an accurate picture of the going rate which your
             employee expects, you will need to do some research. The Bureau of
             Labor Statistics publishes
-            <a
-              target="_blank"
-              href="https://www.bls.gov/bls/blswage.htm"
-              class="text-blue-800 dark:text-blue-400 underline"
-              >excellent figures on the average salary of each profession</a
-            >
+            <a target="_blank" href="https://www.bls.gov/bls/blswage.htm"
+              class="text-blue-800 dark:text-blue-400 underline">excellent figures on the average salary of each
+              profession</a>
             in the U.S., which can be narrowed down by location. If this
             information isn't enough, online services such as Payscale and
             Glassdoor offer reports on salary ranges by position. This figure
@@ -425,8 +396,7 @@ useHead({
         <div id="tldr">
           <h2 class="font-bold text-2xl indent-4 italic">TLDR</h2>
           <ol
-            class="mt-4 list-decimal p-8 pl-12 flex flex-col gap-2 bg-green-200 dark:bg-green-700 border-2 border-green-300 dark:border-green-800 rounded-xl"
-          >
+            class="mt-4 list-decimal p-8 pl-12 flex flex-col gap-2 bg-green-200 dark:bg-green-700 border-2 border-green-300 dark:border-green-800 rounded-xl">
             <li>
               <p>Understand local laws.</p>
             </li>
@@ -447,16 +417,11 @@ useHead({
       </div>
 
       <div>
-        <div
-          class="flex flex-row justify-end mt-4 mb-2 italic text-sm font-medium"
-        >
+        <div class="flex flex-row justify-end mt-4 mb-2 italic text-sm font-medium">
           <router-link to="/meet-us" class="flex flex-row items-center">
             <h2>by <span class="not-italic">Thomas Huber</span></h2>
-            <img
-              src="/thomas-huber-small.webp"
-              alt="picture of Thomas Huber"
-              class="rounded-full object-cover mx-2 w-9 h-9"
-            />
+            <img src="/thomas-huber-small.webp" alt="picture of Thomas Huber"
+              class="rounded-full object-cover mx-2 w-9 h-9" />
           </router-link>
         </div>
       </div>

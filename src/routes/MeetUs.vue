@@ -38,15 +38,6 @@ const send = async (message, contact) => {
       American dream, for although most dreams occur in the dark; so does most
       stumbling, stubbing, and slipping, and we do not want your S Corp to sink.
     </p>
-    <!-- <p class="text-left indent-8 mt-2"> -->
-    <!--   Our company is maximumly diverse, featuring no more than one individual -->
-    <!--   from any race, gender identity, or sexual orientation. -->
-    <!-- </p> -->
-    <!-- <p class="text-left indent-8 mt-2"> -->
-    <!--   Our website may lack color but our blood runs green! We are proud to be -->
-    <!--   low-carbon and near-zero-waste. To-date we are elated to have spilled -->
-    <!--   fewer than several tons of unrefined crude oil into natural ecosystems. -->
-    <!-- </p> -->
 
     <h1 id="meet-us" class="text-left font-bold italic mb-2 mt-8">Meet Us</h1>
     <div class="flex flex-row">
@@ -67,10 +58,7 @@ const send = async (message, contact) => {
           for one, because no matter how lowly you are, he will unearth and love
           each rare morsel of the worthfullness you retain. And take immediate
           heed, for the words he pronounces would multiply you, should you have
-          the faculties to understand them. He is not a man we could hope to be,
-          but perhaps, we can lay a dream; that we may immitate a reflection, of
-          his dog's shadow, as seen looking out through a splintered window
-          across a foggy, night street.
+          the faculties to understand them.
         </p>
       </div>
     </div>
@@ -87,8 +75,7 @@ const send = async (message, contact) => {
       Time my Card is an aspiring multinational media conglomerate set on
       revolutionizing the global economy through an unseen coup of wealth.
       Would-be angel investors in this new Mali-esque kingdom of gold should
-      fill out the contact form below and they shall be gifted a secured
-      existence in the future world-order.
+      fill out the contact form below.
     </p>
     <p class="text-left indent-8 mt-4">Please send us a message!</p>
     <div class="mt-4 font-serif text-base">
@@ -103,8 +90,8 @@ const send = async (message, contact) => {
           v-model="contact" />
 
         <button tabindex="1004" class="place-self-end btn-primary mt-2" @click="() => {
-          send(message, contact)
-        }
+        send(message, contact)
+      }
         ">
           Send Message
         </button>
