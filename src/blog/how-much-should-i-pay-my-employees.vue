@@ -21,14 +21,53 @@ onMounted(() => {
 })
 
 useHead({
-  title: "How Much Should I Pay My Employees?",
+  title: "How Much Should I Pay My Employees? – Time My Card",
   meta: [
-    {
-      name: "description",
-      content:
-        "Learn how to determine fair compensation for your employees with our comprehensive guide to salaries, bonuses, and benefits.",
-    },
+    { name: "description", content: "Learn how to determine fair compensation for your employees with our comprehensive guide to salaries, bonuses, and benefits." },
+    { property: "og:title", content: "How Much Should I Pay My Employees?" },
+    { property: "og:description", content: "Your definitive guide to employee compensation, and its many considerations." },
+    { property: "og:url", content: "https://timemycard.com/articles/how-much-should-i-pay-my-employees" },
+    { property: "og:type", content: "article" },
+    { property: "og:image", content: "https://timemycard.com/give-money-og.webp" },
+    { property: "article:author", content: "Thomas Huber" },
+    { property: "article:published_time", content: "2024-03-02" },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: "How Much Should I Pay My Employees?" },
+    { name: "twitter:description", content: "Your definitive guide to employee compensation." },
+    { name: "twitter:image", content: "https://timemycard.com/give-money-og.webp" },
   ],
+  link: [{ rel: "canonical", href: "https://timemycard.com/articles/how-much-should-i-pay-my-employees" }],
+  script: [
+    {
+      type: 'application/ld+json',
+      textContent: {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "How Much Should I Pay My Employees?",
+        "description": "Your definitive guide to employee compensation, and its many considerations.",
+        "image": "https://timemycard.com/give-money-og.webp",
+        "datePublished": "2024-03-02",
+        "dateModified": "2024-03-02",
+        "author": {
+          "@type": "Person",
+          "name": "Thomas Huber",
+          "url": "https://tomon.om"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Time My Card",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://timemycard.com/text_logo.webp"
+          }
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://timemycard.com/articles/how-much-should-i-pay-my-employees"
+        }
+      }
+    }
+  ]
 })
 </script>
 
@@ -82,7 +121,7 @@ useHead({
         <h1 class="italic font-semibold text-3xl lg:text-4xl">
           How much should I pay my employees?
         </h1>
-        <h2 class="font-medium text-xl text-zinc-600 dark:text-zinc-400 mt-2">
+        <h2 class="font-medium text-xl text-ink-muted mt-2">
           Your definitive guide to employee compensation, and its many
           considerations.
         </h2>
@@ -90,11 +129,11 @@ useHead({
 
       <div class="flex flex-col gap-8 mt-4 mb-2">
         <div class="flex flex-col items-end">
-          <img src="/give-money.webp" alt="" />
-          <p class="text-zinc-600 dark:text-zinc-400 italic text-sm mt-1">
-            Man receiving money. Photograph by
+          <img src="/give-money-large.webp" alt="" />
+          <p class="text-ink-muted italic text-sm mt-1">
+            Unseen person calculating money. Photograph by
             <a target="_blank" href="https://www.pexels.com/@karolina-grabowska/"
-              class="not-italic text-blue-800 dark:text-blue-400 underline">
+              class="not-italic text-link underline">
               Karolina Grabowska
             </a>.
           </p>
@@ -112,7 +151,7 @@ useHead({
             Minimum Wages & Regulations
           </h2>
           <div
-            class="text-center mt-4 p-4 bg-green-200 dark:bg-green-700 border-2 border-green-300 dark:border-green-800 rounded-xl">
+            class="text-center mt-4 p-4 bg-callout-bg border-2 border-callout-border rounded-xl">
             <p class="">
               Before making the tough decisions, first understand the minimums
               required of you legally.
@@ -130,7 +169,7 @@ useHead({
                 These employees instead are paid a fixed yearly salary. Review
                 the Department of Labor's (DOL)
                 <a target="_blank" href="https://www.dol.gov/agencies/whd/fact-sheets/17a-overtime"
-                  class="text-blue-800 dark:text-blue-400 underline">
+                  class="text-link underline">
                   fact sheets</a>
                 to determine if your employee is exempt.
               </p>
@@ -150,7 +189,7 @@ useHead({
                 Federal minimum wage is <b>$7.25</b> an hour, though many states
                 have enacted higher minimum wages. The DOL provides a
                 <a target="_blank" href="https://www.dol.gov/agencies/whd/minimum-wage/state"
-                  class="text-blue-800 dark:text-blue-400 underline">map of the minimum wage in every state</a>.
+                  class="text-link underline">map of the minimum wage in every state</a>.
               </p>
             </li>
             <li>
@@ -184,7 +223,7 @@ useHead({
                 It is most common to pay hourly employees once every other week.
                 But most states have specific pay frequency laws, so review
                 <a target="_blank" href="https://www.dol.gov/agencies/whd/state/payday"
-                  class="text-blue-800 dark:text-blue-400 underline">this DOL table</a>
+                  class="text-link underline">this DOL table</a>
                 to find out which payment schemes are available in your state.
               </p>
             </li>
@@ -196,12 +235,12 @@ useHead({
             How to Find Competitive Salaries
           </h2>
           <div
-            class="text-center mt-4 p-4 bg-green-200 dark:bg-green-700 border-2 border-green-300 dark:border-green-800 rounded-xl">
+            class="text-center mt-4 p-4 bg-callout-bg border-2 border-callout-border rounded-xl">
             <p class="">
               Understanding what your employee expects to be paid is crucial,
               luckily
               <a target="_blank" href="https://www.bls.gov/bls/blswage.htm"
-                class="text-blue-800 dark:text-blue-400 underline">this information</a>
+                class="text-link underline">this information</a>
               is publically available.
             </p>
           </div>
@@ -212,7 +251,7 @@ useHead({
             employee expects, you will need to do some research. The Bureau of
             Labor Statistics publishes
             <a target="_blank" href="https://www.bls.gov/bls/blswage.htm"
-              class="text-blue-800 dark:text-blue-400 underline">excellent figures on the average salary of each
+              class="text-link underline">excellent figures on the average salary of each
               profession</a>
             in the U.S., which can be narrowed down by location. If this
             information isn't enough, online services such as Payscale and
@@ -396,7 +435,7 @@ useHead({
         <div id="tldr">
           <h2 class="font-bold text-2xl indent-4 italic">TLDR</h2>
           <ol
-            class="mt-4 list-decimal p-8 pl-12 flex flex-col gap-2 bg-green-200 dark:bg-green-700 border-2 border-green-300 dark:border-green-800 rounded-xl">
+            class="mt-4 list-decimal p-8 pl-12 flex flex-col gap-2 bg-callout-bg border-2 border-callout-border rounded-xl">
             <li>
               <p>Understand local laws.</p>
             </li>

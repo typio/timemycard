@@ -1,117 +1,160 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
-    .btn-primary {
-        @apply py-2 px-4 border-[1px] border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black;
-    }
+  .btn-primary {
+    @apply py-2 px-4 border-[1px] border-ink-primary hover:bg-ink-primary hover:text-paper-base;
+  }
+}
+
+.font-sans {
+  font-size-adjust: 0.5;
+}
+
+.font-serif {
+  font-size-adjust: 0.5;
 }
 
 :root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color-scheme: light;
 
-    color-scheme: light dark;
-    color: black;
-    background-color: white;
+  --paper-base: #fbf8f1;
+  --paper-tint: #f5f1e8;
+  --paper-emphasis: #e6dfd0;
 
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  --ink-primary: #1a1814;
+  --ink-muted: #5c554b;
+  --ink-faint: #a39a8a;
 
+  --ink-critic: #dd3b2c;
+
+  --hairline: #3a3530;
+
+  --link: #7a3e2c;
+
+  --callout-bg: #f0e9d8;
+  --callout-border: #8a7c63;
+
+  --selection-bg: #e8d8b8;
+
+  color: var(--ink-primary);
+  background-color: var(--paper-base);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root.dark {
+  color-scheme: dark;
+
+  --paper-base: #0e0d0a;
+  --paper-tint: #191613;
+  --paper-emphasis: #27221e;
+
+  --ink-primary: #f0ebe0;
+  --ink-muted: #a39a8a;
+  --ink-faint: #5c554b;
+
+  /* --ink-critic: #9a1913; */
+
+  --hairline: #bdb4a3;
+
+  --link: #d4946a;
+
+  --callout-bg: #2a2520;
+  --callout-border: #7a6f5a;
+
+  --selection-bg: #3a2f1f;
 }
 
 ::selection {
-    background: #d4d4d8;
+  background: var(--selection-bg);
 }
 
 ::-moz-selection {
-    background: #d4d4d8;
+  background: var(--selection-bg);
 }
 
-:root.dark ::selection {
-    background: #3f3f46;
+/* § ViewTransitionAPI */
+::view-transition-old(root),
+::view-transition-new(root) {
+  /* animation-duration: 1000ms; */
+  animation: none;
+
+  /* need? */
+  mix-blend-mode: normal;
 }
 
-:root.dark ::-moz-selection {
-    background: #3f3f46;
+::view-transition-new(root) {
+  animation: 300ms ease-in-out both wipe-in;
 }
 
-
-:root.dark {
-    background-color: black;
-    color: white;
-
-
+::view-transition-old(root) {
+  animation: none;
 }
 
-button,
+@keyframes wipe-in {
+  from {
+    clip-path: inset(0 0 0 100%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
 input,
 select,
 textarea {
-    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
-    transition-timing-function: ease-in-out;
-    transition-duration: 100ms;
+  padding: 2px 0 2px 2px;
+  border: solid var(--ink-primary) 1px;
 }
 
-input,
-select,
-textarea {
-    padding: 2px 0 2px 2px;
-    border: solid black 1px;
+input[type='checkbox'] {
+  appearance: none;
+  margin: 0;
+
+  border-radius: 0;
+  width: 1rem;
+  height: 1rem;
+  border: 0.15em solid currentColor;
+
+  display: grid;
+  place-content: center;
+
+  padding: 0px;
 }
 
-input[type=checkbox] {
-    appearance: none;
-    margin: 0;
-
-    border-radius: 0;
-    width: 1rem;
-    height: 1rem;
-    border: 0.15em solid currentColor;
-
-    display: grid;
-    place-content: center;
-
-    padding: 0px;
-
+input[type='checkbox']::before {
+  content: '';
+  width: 0.5rem;
+  height: 0.5rem;
+  transform: scale(0);
+  box-shadow: inset 1rem 1rem;
 }
 
-input[type="checkbox"]::before {
-    content: "";
-    width: 0.5rem;
-    height: 0.5rem;
-    transform: scale(0);
-    box-shadow: inset 1rem 1rem;
-
+input[type='checkbox']:checked::before {
+  transform: scale(1);
 }
-
-input[type="checkbox"]:checked::before {
-    transform: scale(1);
-}
-
 
 *:focus-visible {
-    outline: 2px solid black;
-    outline-offset: 0px;
-    z-index: 10;
+  outline: 2px solid var(--ink-primary);
+  outline-offset: 0px;
+  z-index: 10;
 }
 
 ::-webkit-calendar-picker-indicator {
-    fill: black;
+  fill: var(--ink-primary);
 }
 
 :root.dark ::-webkit-calendar-picker-indicator {
-    filter: invert(1)
+  filter: invert(1);
 }
 
 * {
-    border-color: black;
-}
-
-:root.dark * {
-    border-color: white;
+  border-color: var(--ink-primary);
 }

@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import faqs from '../faq.json'
+
 const snippets = [
   {
     title: `What is a Time Card Calculator?`,
@@ -59,49 +61,21 @@ const snippets = [
         `,
   },
   {
-    title: `Frequently Asked Questions (FAQ)`,
-    body: `Here is a replete list of answers to the questions you might have.
-        </br></br><b>Q: How do I input time data into the calculator?</b>
-        </br>A: Enter the start and end times for each work period, including any break times. The calculator will automatically compute the total hours.
-
-        </br></br><b>Q: Can the calculator handle different time formats?</b>
-        </br>A: Yes, our calculator can process both 12-hour and 24-hour time formats, automatically adjusting to your preference.
-
-        </br></br><b>Q: Can this tool accurately calculate overtime hours?</b>
-        </br>A: Yes, our Time Card Calculator is equipped with robust features to accurately calculate both regular
-        and overtime hours. It currently supports the standard overtime scheme, which is based on exceeding 8 hours per day.
-        We understand the diversity of overtime regulations, and we are actively working to incorporate additional overtime
-        calculation options. This upcoming feature will cater to various local laws and work patterns, ensuring our calculator
-        meets a wider range of needs. Stay tuned for updates on this enhancement!
-
-        </br></br><b>Q: How secure is my data when using this calculator?</b>
-        </br>A: We prioritize user data security. None of your time card data leaves your computer, ensuring your information
-        stays fully confidential.
-
-        </br></br><b>Q: Can I print the calculated time card data?</b>
-        </br>A: Yes, the calculator offers easy printing options for your convenience and record-keeping purposes.
-
-        </br></br><b>Q: Is there a feature for tracking break times?</b>
-        </br>A: Yes, the calculator allows you to input break times, which are then subtracted from the total work hours for accurate calculations.
-        `,
-  },
+    title: `Frequently Asked Questions <span class='text-sm'>a.k.a</span> FAQ`,
+    body: 'Here is a replete list of answers to the questions you might have.' +
+      faqs.map(qa => `
+        </br></br><b>Q: ${qa.Q}</b>
+        </br>A: ${qa.A}`
+      )
+  }
 ]
 </script>
 
 <template>
   <div v-for="(snippet, i) in snippets">
-    <h3
-      class="text-left mt-6 text-xl font-semibold text-zinc-900 dark:text-zinc-100"
-    >
-      {{ snippet.title }}
+    <h3 class="text-left mt-6 text-xl font-semibold text-ink-primary" v-html="snippet.title">
     </h3>
-    <p
-      class="text-left mt-2 text-base font-medium text-zinc-800 dark:text-zinc-200 first-letter:text-zinc-900 dark:first-letter:text-zinc-100 first-letter:font-bold"
-      v-html="snippet.body"
-    ></p>
-    <div
-      class="my-4 h-1 border-b-[1px] border-zinc-300 dark:border-zinc-700"
-      v-if="i < snippets.length - 1"
-    />
+    <p class="text-left mt-2 text-base font-medium text-ink-primary" v-html="snippet.body"></p>
+    <div class="my-4 h-1 border-b-[1px] border-hairline" v-if="i < snippets.length - 1" />
   </div>
 </template>

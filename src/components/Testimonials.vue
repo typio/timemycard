@@ -1,7 +1,5 @@
 <script lang="ts" setup>
 import { onMounted, onUnmounted, ref } from "vue"
-import { db } from "./../stores/firebaseStore"
-import { collection, addDoc } from "firebase/firestore"
 
 const testimonials = [
   {
@@ -12,6 +10,10 @@ const testimonials = [
     body: `This software is so user friendly! And it saves us money on 3rd party payroll costs.`,
     author: `Carmen H.`,
   },
+  {
+    body: `THE BEST CALCULATOR APP`,
+    author: `April W., Counselor`
+  }
 ]
 
 const testimonialI = ref(Math.floor(Math.random() * (testimonials.length - 1)))
@@ -34,15 +36,20 @@ const message = ref("")
 const name = ref("")
 const role = ref("")
 
-const post = async (message, name, role) => {
-  await addDoc(collection(db, "mail"), {
-    to: "me@tohuber.com",
-    message: {
-      subject: `Time My Card comment from ${name}`,
-      text: `${message}\n${name} ${role}`,
-      html: `${message}<br />${name}, ${role}`,
-    },
-  }).then(() => (mode.value = "display"))
+const post = async (message: string, name: string, role: string) => {
+  try {
+    await fetch("https://mail.tomon.om/send", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        subject: `Comment from ${name}`,
+        text: `${message}\n${name} ${role}`,
+        html: `${message}<br />${name}, ${role}`,
+        contact: name,
+      }),
+    })
+  } catch {}
+  mode.value = "display"
 }
 </script>
 
@@ -53,19 +60,17 @@ const post = async (message, name, role) => {
     <div v-if="mode == 'display'">
       <Transition name="slide" mode="out-in">
         <div
-          class="h-36 flex overflow-hidden h- w-[100%] place-items-center"
+          class="h-36 flex flex-col justify-center overflow-hidden w-[100%] place-items-center"
           :key="testimonialI"
         >
-          <div>
-            <p class="text-base text-zinc-900 dark:text-zinc-100">
+            <p class="text-base text-ink-primary">
               {{ testimonials[testimonialI].body }}
             </p>
             <p
-              class="text-zinc-600 dark:text-zinc-400 font-sans text-sm uppercase font-bold mt-2"
+              class="text-ink-muted font-sans text-sm uppercase font-bold mt-2"
             >
               {{ testimonials[testimonialI].author }}
             </p>
-          </div>
         </div>
       </Transition>
       <button
@@ -91,7 +96,7 @@ const post = async (message, name, role) => {
         type="text"
         placeholder="Comment"
         rows="2"
-        class="p-2 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 bg-white dark:bg-black dark:border-white dark:outline-white"
+        class="p-2 placeholder:text-ink-faint bg-paper-base border-ink-primary outline-ink-primary"
         v-model="message"
       >
       </textarea>
@@ -100,14 +105,14 @@ const post = async (message, name, role) => {
           tabindex="1002"
           type="text"
           placeholder="Name"
-          class="p-1 w-full pl-1 text-center placeholder:text-zinc-400 dark:placeholder:text-zinc-600 bg-white dark:bg-black dark:border-white dark:outline-white"
+          class="p-1 w-full pl-1 text-center placeholder:text-ink-faint bg-paper-base border-ink-primary outline-ink-primary"
           v-model="name"
         />
         <input
           tabindex="1003"
           type="text"
           placeholder="Role"
-          class="p-1 w-full pl-1 text-center placeholder:text-zinc-400 dark:placeholder:text-zinc-600 bg-white dark:bg-black dark:border-white dark:outline-white"
+          class="p-1 w-full pl-1 text-center placeholder:text-ink-faint bg-paper-base border-ink-primary outline-ink-primary"
           v-model="role"
         />
       </div>

@@ -1,17 +1,21 @@
 <script lang="ts" setup>
-import { ref } from "vue"
+import { ref } from 'vue'
 
-const isDarkMode = ref(document.documentElement.classList.contains("dark"))
+const isDarkMode = ref(document.documentElement.classList.contains('dark'))
 
 const toggleDarkMode = () => {
   isDarkMode.value = !isDarkMode.value
-  if (isDarkMode.value) {
-    document.documentElement.classList.add("dark")
-    localStorage.theme = "dark"
-  } else {
-    document.documentElement.classList.remove("dark")
-    localStorage.theme = "light"
-  }
+  localStorage.theme = isDarkMode.value ? 'dark' : 'light'
+
+  if (
+    !document.startViewTransition ||
+    matchMedia('(prefers-reduced-motion: reduce)').matches
+  )
+    document.documentElement.classList.toggle('dark')
+  else
+    document.startViewTransition(() => {
+      document.documentElement.classList.toggle('dark')
+    })
 }
 </script>
 

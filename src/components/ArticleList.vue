@@ -29,7 +29,7 @@ import blogIndex from "../blog/blogIndex.json"
         <img
           :src="post.img_path"
           alt="post.img_alt"
-          class="object-cover h-56"
+          class="object-cover grayscale h-56"
         />
         <div class="flex flex-col flex-grow px-4">
           <h1 class="mt-4 mb-2 text-lg">
