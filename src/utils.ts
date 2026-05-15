@@ -54,7 +54,13 @@ export type TimeDuration = {
     minutes: number
 }
 
-export const calculateTime = (inTimeStamp: TimeStamp, outTimeStamp: TimeStamp, breakMinutes: number, minHoursPerDay, OTHours?): { withoutOT: number, OT: number } | null => {
+export const calculateTime = (
+    inTimeStamp: TimeStamp,
+    outTimeStamp: TimeStamp,
+    breakMinutes: number,
+    minHoursPerDay,
+    OTHours?
+): { withoutOT: number, OT: number } | null => {
     if (inTimeStamp.hours == undefined || inTimeStamp.minutes == undefined ||
         outTimeStamp.hours == undefined || outTimeStamp.minutes == undefined)
         return null
