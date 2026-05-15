@@ -34,12 +34,15 @@ export type Settings = {
 }
 
 const STORAGE_KEY = 'timeMyCardAppState';
+const isBrowser = typeof window !== 'undefined';
 
 function saveState(state) {
+    if (!isBrowser) return;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 }
 
 function loadState() {
+    if (!isBrowser) return null;
     const savedState = localStorage.getItem(STORAGE_KEY);
     return savedState ? JSON.parse(savedState) : null;
 }
