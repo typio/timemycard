@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: http://timemycard.com/sitemap.xml
+Sitemap: https://timemycard.com/sitemap.xml
